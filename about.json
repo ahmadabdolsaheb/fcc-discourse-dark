@@ -2,21 +2,21 @@
   "name": "Vincent",
   "about_url": "https://meta.discourse.org/t/76662/",
   "license_url": "https://github.com/hnb-ku/discourse-vincent-theme/blob/master/LICENSE",
-   "assets": {
-        "vincent-background": "assets/vincent-background.svg"
-   },
-   "color_schemes": {
-       "Vincent Dark": {
-          "primary": "cccccc",
-          "secondary": "111111",
-          "tertiary": "009dd8",
-          "quaternary": "9E9E9E",
-          "header_background": "131418",
-          "header_primary": "cccccc",
-          "highlight": "9E9E9E",
-          "danger": "96000e",
-          "success": "1ca551",
-          "love": "f50057"
-        }
+  "assets": {
+    "vincent-background": "assets/vincent-background.svg"
+  },
+  "color_schemes": {
+    "Vincent Dark": {
+      "primary": "f5f6f7",
+      "secondary": "0a0a23",
+      "tertiary": "99c9ff",
+      "quaternary": "9696E4",
+      "header_background": "0a0a23",
+      "header_primary": "f5f6f7",
+      "highlight": "99c9ff",
+      "danger": "96000e",
+      "success": "1ca551",
+      "love": "f50057"
     }
+  }
 }
