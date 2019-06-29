@@ -1,13 +1,3 @@
-// color fucntion ----------------------------------------------------------------------------
-$primary-color: mix($primary, $secondary, 100%);
-$secondary-color: mix($primary, $secondary, 93%);
-$tertiary-color: mix($primary, $secondary, 87%);
-$quaternary-color: mix($primary, $secondary, 80%);
-$quaternary-background: mix($primary, $secondary, 20%);
-$tertiary-background: mix($primary, $secondary, 13%);
-$secondary-background: mix($primary, $secondary, 7%);
-$primary-background: mix($primary, $secondary, 0%);
-
 // functions  --------------------------------------------------------------------------------
 
 // Calculate brightness value
@@ -79,6 +69,14 @@ $v-lightness: 0 !default;
 $V-page-max-width: 95vw !default;
 
 // palette colors -------------------------------
+$fcc-primary-color: mix($primary, $secondary, 100%);
+$fcc-secondary-color: mix($primary, $secondary, 93%);
+$fcc-tertiary-color: mix($primary, $secondary, 87%);
+$fcc-quaternary-color: mix($primary, $secondary, 80%);
+$fcc-quaternary-background: mix($primary, $secondary, 20%);
+$fcc-tertiary-background: mix($primary, $secondary, 13%);
+$fcc-secondary-background: mix($primary, $secondary, 7%);
+$fcc-primary-background: mix($primary, $secondary, 0%);
 
 $theme-base: hsl(
   hue($tertiary) + $v-hue,
@@ -949,7 +947,7 @@ section.post-menu-area {
 body {
   position: relative;
   background-attachment: scroll;
-  background-color: $secondary;
+  background-color: $fcc-secondary-background;
 }
 
 #background,
