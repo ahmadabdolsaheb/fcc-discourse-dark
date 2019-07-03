@@ -1307,10 +1307,6 @@ a {
   border-radius: 0;
 }
 
-header.d-header.clearfix {
-  border-bottom: 1px solid #555555;
-}
-
 .menu-panel.drop-down {
   border-bottom: 1px solid #555555;
 }
@@ -2411,12 +2407,56 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 //   "success": "1ca551",
 //   "love": "f50057"
 // }
+/*----------------------------------navigation----------------------------*/
 
-header.d-header.clearfix {
-  border-bottom: 5px solid $secondary;
+@media screen and (min-width: 500px) {
+  .d-header {
+    height: 38px;
+  }
+
+  .d-header .categories-wrapper,
+  .d-header .topic-header-extra {
+    display: none;
+  }
+  /*----------------------------------removing nav icons for desktop----------------------------*/
+  #current-user a:before {
+    content: "Profile";
+    color: $fcc-primary-color;
+  }
+
+  #current-user div {
+    display: none;
+  }
+
+  #search-button:before {
+    content: "Search";
+    color: $fcc-primary-color;
+  }
+
+  .fa.d-icon.d-icon-search.svg-icon.svg-node {
+    display: none;
+  }
+
+  #toggle-hamburger-menu:before {
+    content: "Menu";
+    color: $fcc-primary-color;
+  }
+
+  .fa.d-icon.d-icon-bars.svg-icon.svg-node {
+    display: none;
+  }
+
+  .d-header-icons .icon {
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  .header-dropdown-toggle {
+    padding-left: 35px;
+  }
 }
-$theme-color: #0a0a23;
-$header-height: 38px;
 
 /*-----------------------------------brand specific customizationz--------*/
 img.avatar {
