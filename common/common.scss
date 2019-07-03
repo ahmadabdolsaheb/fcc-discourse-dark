@@ -131,10 +131,6 @@ h6 {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-size: 90%;
-}
-
 .cooked {
   p,
   ul,
@@ -218,7 +214,7 @@ html {
 }
 
 * {
-  outline-color: darken($theme-base, 15%) $i;
+  outline-color: $tertiary $i;
 }
 
 // colors -------------------------------------------------------------------------------------
@@ -284,9 +280,52 @@ nav.post-controls .highlight-action,
 .period-chooser .top-date-string,
 .small-action .small-action-desc,
 .small-action .topic-avatar i {
-  color: darken($text-base, 30%);
+  color: $fcc-tertiary-color;
 }
 
+table th {
+  color: $fcc-tertiary-color;
+}
+
+.topic-list-item.visited a.title:not(.badge-notification),
+.latest-topic-list-item.visited a.title:not(.badge-notification),
+.category-topic-link.visited a.title:not(.badge-notification) {
+  color: $fcc-quaternary-color;
+}
+
+.topic-list-main-link a.title,
+.topic-list .main-link a.title,
+.latest-topic-list-item .main-link a.title {
+  color: $fcc-secondary-color;
+}
+
+.badge-wrapper.bullet span.badge-category {
+  color: $fcc-quaternary-color;
+}
+
+.badge-posts[href] {
+  color: $fcc-quaternary-color;
+}
+
+.topic-list td {
+  color: $fcc-quaternary-color;
+}
+
+.heatmap-high,
+.heatmap-high a,
+.heatmap-med,
+.heatmap-med a,
+.heatmap-low,
+.heatmap-low a,
+.coldmap-high,
+.coldmap-med,
+.coldmap-low {
+  color: $fcc-quaternary-color !important;
+}
+
+div.education {
+  color: $fcc-quaternary-color;
+}
 // backgrounds --------------------------------------------------------------------------------
 
 // background theme base -------------------------
@@ -332,7 +371,7 @@ tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 #user-card .card-content,
 .user-nav,
 .user-main .staff-counters {
-  background: $main-background;
+  background: $fcc-secondary-background;
   color: darken(desaturate(reverse-lightness($main-background), 100%), 10%);
 }
 
@@ -362,6 +401,10 @@ button.ok:hover {
   background: $success;
 }
 
+.discourse-no-touch .sortable:hover {
+  background-color: $tertiary;
+  color: $fcc-primary-background;
+}
 // background none ------------------------------
 
 .nav-pills > li:not(.active) > a:hover,
@@ -511,7 +554,7 @@ section.about table th,
 .latest-topic-list-item,
 .category-list tbody tr,
 .popup-menu {
-  border-color: $border-color $i;
+  border-color: $fcc-quaternary-background $i;
 }
 
 // border custom borders ---------------------------
@@ -539,6 +582,13 @@ img.avatar,
   border-width: 1px;
 }
 
+tr {
+  border-bottom: 1px solid $fcc-quaternary-background;
+}
+
+.topic-list-item-separator td {
+  border-bottom: 1px solid $fcc-quaternary-background;
+}
 // Margins ------------------------------------------------------------------------------------
 
 // 0 auto ------------------------------------------
@@ -1113,7 +1163,7 @@ a {
 
   &:hover,
   &.btn-hover {
-    background-color: darken($theme-base, 15%);
+    background-color: $tertiary;
     color: $text-base;
   }
 
@@ -1155,7 +1205,7 @@ a {
 
     &:hover,
     &.btn-hover {
-      background-color: darken($theme-base, 15%);
+      background-color: $tertiary;
       color: $text-base;
     }
   }
@@ -1214,7 +1264,7 @@ a {
 // Extras -------------------------------------------------------------------------------------
 
 .pace .pace-progress {
-  background: darken($theme-base, 15%);
+  background: $tertiary;
 }
 
 .spinner {
@@ -1237,7 +1287,7 @@ a {
 }
 
 .modal.history-modal .diff-ins {
-  background: darken($theme-base, 15%);
+  background: $tertiary;
 }
 
 .modal.history-modal ins {
@@ -1250,7 +1300,7 @@ a {
 }
 
 .badge-category-bg {
-  border-radius: 100vw;
+  border-radius: 0;
 }
 
 .badge-wrapper.box span.badge-category-bg {
@@ -1364,15 +1414,14 @@ blockquote {
 .d-icon.d-icon-d-tracking,
 .d-icon.d-icon-d-watching,
 .badge-notification.new-topic {
-  color: lighten(desaturate($theme-base, 20%), 10%);
+  color: $tertiary;
 }
 
 table.topic-list > thead,
 table.category-list > thead,
 .latest-topic-list .table-heading,
 .table-heading {
-  background: $main-background;
-  border-bottom: 1px solid $border-color;
+  background: $fcc-tertiary-background;
 }
 
 .post-info .wiki,
@@ -1387,10 +1436,10 @@ table.category-list > thead,
 }
 
 span.badge-category-parent-bg {
-  border-radius: 100vw 0 0 100vw;
+  border-radius: 0;
 
   + .badge-category-bg {
-    border-radius: 0 100vw 100vw 0;
+    border-radius: 0;
     border-left: 1px solid $header_background;
   }
 }
@@ -1731,7 +1780,7 @@ h1.page-not-found {
   &:hover,
   &.d-hover {
     opacity: 1;
-    background: darken($theme-base, 15%);
+    background: $tertiary;
 
     .d-icon {
       color: inherit;
@@ -1822,7 +1871,7 @@ button {
 }
 
 tbody {
-  border-top-width: 1px;
+  border-top-width: 0;
 }
 
 // desktop only
@@ -1934,7 +1983,7 @@ html.mobile-view.mobile-device {
 
 .group-info .avatar-flair,
 .groups-table .groups-info .avatar-flair {
-  border-radius: 50%;
+  border-radius: 0;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -2245,13 +2294,13 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
   article:not(#post_1) section.post-menu-area,
   .post-links-container,
   .reply .cooked {
-    border-radius: 0 0 10px 10px;
+    border-radius: 0;
   }
 
   .topic-meta-data,
   #reply-control,
   .embedded-posts.top {
-    border-radius: 10px 10px 0 0;
+    border-radius: 0;
   }
 
   .popup-menu,
@@ -2275,16 +2324,16 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
   .moderator .topic-body,
   .topic-body.highlighted,
   #user-card {
-    border-radius: 10px;
+    border-radius: 0px;
   }
 
   aside.quote {
     .title {
-      border-radius: 10px 10px 0 0;
+      border-radius: 0;
     }
 
     blockquote {
-      border-radius: 0 0 10px 10px;
+      border-radius: 0;
     }
   }
 
@@ -2292,11 +2341,11 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
   .btn,
   button:hover,
   button.d-hover {
-    border-radius: 4px;
+    border-radius: 0px;
   }
 
   .topic-map .map-collapsed .buttons .btn {
-    border-radius: 0 0 10px 0;
+    border-radius: 0;
   }
 
   table,
@@ -2307,7 +2356,7 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
   }
 
   a {
-    border-radius: 3px;
+    border-radius: 0px;
   }
 
   .cooked > .onebox,
@@ -2316,12 +2365,12 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
   .user-stream-item,
   .d-editor-preview blockquote,
   .d-editor-preview aside.onebox {
-    border-radius: 10px;
+    border-radius: 0px;
   }
 
   .category-box,
   .category-box-inner {
-    border-radius: 15px;
+    border-radius: 0px;
   }
 
   .embedded-posts.bottom {
@@ -2335,7 +2384,7 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 
   // plugin support
   #whos-online {
-    border-radius: 10px;
+    border-radius: 0px;
   }
 }
 
@@ -2384,22 +2433,6 @@ img.avatar {
 .badge-category-bg {
   display: none;
 }
-
-span,
-.discourse-tags,
-th {
-  flex-shrink: 0;
-  line-height: 33px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-// .topic-list-item.visited a.title:not(.badge-notification),
-// .latest-topic-list-item.visited a.title:not(.badge-notification),
-// .category-topic-link.visited a.title:not(.badge-notification) {
-//   color: $quaternary-color;
-// }
 
 a:hover {
   text-decoration: underline;
