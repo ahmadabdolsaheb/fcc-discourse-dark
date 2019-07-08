@@ -326,6 +326,52 @@ table th {
 div.education {
   color: $fcc-quaternary-color;
 }
+
+//custom colors
+.cooked p,
+.cooked ul,
+.cooked ol,
+.timeline-container .topic-timeline .timeline-ago {
+  color: $fcc-quaternary-color;
+}
+
+.topic-map .buttons .btn,
+.names span a,
+.timeline-footer-controls,
+.timeline-container .topic-timeline .now-date,
+.timeline-container .topic-timeline .start-date,
+.topic-map h4,
+.topic-map .map .number,
+.topic-map .topic-map-post a,
+span.relative-date,
+.timeline-replies,
+.post-info.edits a,
+nav.post-controls a,
+nav.post-controls button {
+  color: $fcc-quaternary-color;
+}
+
+div.menu-links-header .fa,
+div.menu-links-header a,
+.search-container .search-advanced .search-notice .fps-invalid,
+nav.post-controls a,
+nav.post-controls button {
+  color: $fcc-tertiary-color;
+}
+// .topic-meta-data .post-info a,
+// nav.post-controls button.create
+a.topic-featured-link,
+nav.post-controls button.create {
+  color: $tertiary;
+}
+
+// nav.post-controls button.create {
+//   fill: $tertiary $i;
+// }
+.hljs-comment,
+.hljs-doctag {
+  color: $fcc-quaternary-color;
+}
 // backgrounds --------------------------------------------------------------------------------
 
 // background theme base -------------------------
@@ -437,6 +483,45 @@ tr.topic-list-item-separator + .topic-list-item,
   background: $n;
 }
 
+//custom background------------------------------
+.topic-map .buttons .btn:hover,
+button.widget-button.btn-flat:hover,
+nav.post-controls .double-button:hover,
+nav.post-controls .double-button:hover button,
+button.widget-button.btn-flat.toggle-like.like.no-text.btn-icon:hover,
+button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:hover {
+  color: $fcc-primary-color;
+  background: $fcc-quaternary-background;
+}
+
+.btn-primary.create.btn.btn-icon-text:hover,
+.discourse-no-touch .btn:hover,
+.discourse-no-touch .btn.btn-hover {
+  color: $fcc-secondary-background;
+  background: $tertiary;
+}
+
+.btn-primary.create.btn.btn-icon-text {
+  background: $fcc-secondary-background;
+}
+
+.search-container .search-advanced-sidebar .search-advanced-title,
+.search-container .search-advanced-sidebar .search-advanced-filters {
+  background: $fcc-tertiary-background;
+}
+
+p > code,
+li > code,
+pre > code {
+  background: $fcc-quaternary-background;
+}
+
+.meta,
+.meta .informations {
+  background: $fcc-quaternary-background;
+  color: $fcc-quaternary-color;
+}
+
 // borders  ----------------------------------------------------------------------------------
 
 // border border none ---------------------------
@@ -467,7 +552,6 @@ img.avatar,
 .embedded-posts .topic-body,
 .embedded-posts .row,
 .topic-map .buttons .btn,
-.topic-post,
 .select-kit.combo-box.tag-drop .tag-drop-header,
 .select-kit.combo-box.category-drop .category-drop-header {
   border: $n $i;
@@ -497,8 +581,9 @@ hr,
 .reply > .row,
 .category-list tbody tr:first-of-type,
 .reply .topic-body,
-.small-action {
-  border-top: 1px solid;
+.small-action,
+.topic-post {
+  border-top: 1px solid $fcc-quaternary-background;
 }
 
 // border border-bottom ---------------------------
@@ -512,7 +597,7 @@ hr,
 }
 
 // border border-color ----------------------------
-
+.select-kit.dropdown-select-box .select-kit-body,
 img.avatar,
 .menu-panel,
 #share-link.visible,
@@ -557,7 +642,7 @@ section.about table th,
   border-color: $fcc-quaternary-background $i;
 }
 
-// border custom borders ---------------------------
+// custom borders ---------------------------
 
 img.avatar,
 .docked .d-header {
@@ -588,6 +673,12 @@ tr {
 
 .topic-list-item-separator td {
   border-bottom: 1px solid $fcc-quaternary-background;
+}
+
+.time-gap {
+  border-top: solid 1px $border-color;
+  border-left: solid 1px $border-color;
+  border-right: solid 1px $border-color;
 }
 // Margins ------------------------------------------------------------------------------------
 
@@ -909,6 +1000,9 @@ a.expand-hidden {
   padding: 1.25em;
 }
 
+.small-action .small-action-desc {
+  padding: 10px 0;
+}
 // Display and positioning --------------------------------------------------------------------
 
 #topic-footer-buttons,
@@ -1148,7 +1242,6 @@ a {
 
 .btn {
   position: relative;
-  text-transform: $button-text-case;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   transform: translate3d(0, 0, 0);
   color: invert-contrast($text-base);
@@ -1206,7 +1299,7 @@ a {
     &:hover,
     &.btn-hover {
       background-color: $tertiary;
-      color: $text-base;
+      color: $fcc-secondary-background;
     }
   }
 
@@ -1247,10 +1340,6 @@ a {
 }
 
 @media (max-width: 850px) {
-  body {
-    background: $n;
-  }
-
   .topic-list th,
   .topic-list td {
     padding: 0.75em;
@@ -1312,7 +1401,7 @@ a {
 }
 
 .modal-inner-container {
-  background: $header_background;
+  background: $fcc-tertiary-background;
 }
 
 aside.onebox header a[href] {
@@ -1436,7 +1525,7 @@ span.badge-category-parent-bg {
 
   + .badge-category-bg {
     border-radius: 0;
-    border-left: 1px solid $header_background;
+    border-left: 1px solid $fcc-tertiary-background;
   }
 }
 
@@ -1807,13 +1896,13 @@ section.post-actions:empty {
 }
 
 .popup-menu {
-  background-color: $header_background;
+  background-color: $fcc-tertiary-background;
   border-color: $border-color;
 }
 
 .d-header .menu-panel {
   box-shadow: $n;
-  background-color: $header_background;
+  background-color: $fcc-tertiary-background;
   border-top: 1px solid #555;
 }
 
@@ -1863,7 +1952,7 @@ button {
 }
 
 .admin-contents thead th {
-  background: $header_background;
+  background: $fcc-tertiary-background;
 }
 
 tbody {
@@ -1999,12 +2088,12 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 .cooked,
 .post-menu-area,
 .moderator .topic-body .contents .cooked {
-  background: $header_background;
+  background: $fcc-secondary-background;
 }
 
 .mobile-view.mobile-device {
   .topic-post .boxed .contents {
-    background: $header_background;
+    background: $fcc-tertiary-background;
   }
 }
 
@@ -2016,12 +2105,12 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 
 .topic-meta-data {
   padding: 0.5em;
-  background: $q-background;
+  background: $fcc-secondary-background;
 }
 
 .topic-map {
   margin: 0;
-  background: $q-background;
+  background: $fcc-tertiary-background;
 }
 
 .post-stream {
@@ -2041,7 +2130,7 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 }
 
 .time-gap {
-  padding: 0 100px;
+  padding: 0 10px;
   margin-bottom: 0 !important;
 }
 
@@ -2089,7 +2178,6 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 }
 
 .post-actions {
-  background: $q-background;
   margin: 0;
   padding-bottom: 1em;
 }
@@ -2153,7 +2241,7 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 
 #topic-title .edit-topic-title {
   padding: 1em;
-  background: rgba(0, 0, 0, 0.5);
+  background: $fcc-tertiary-background;
 }
 
 #topic-title .title-wrapper {
@@ -2194,7 +2282,7 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 .embedded-posts .collapse-down,
 .embedded-posts .collapse-up {
   color: $text-base;
-  background: $header_background;
+  background: $fcc-tertiary-background;
   border-color: $border-color;
 }
 //
@@ -2258,13 +2346,12 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 }
 
 #topic-title .title-wrapper {
-  background: rgba(0, 0, 0, 0.5);
   padding: 1em;
   margin-top: 1em;
 }
 
 .post-links-container {
-  background: rgba(0, 0, 0, 0.5);
+  background: $fcc-tertiary-background;
 }
 
 .title-wrapper .topic-category {
@@ -2457,6 +2544,143 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
     padding-left: 35px;
   }
 }
+/*----------------------------------icon and text replacemt----------------------------*/
+
+// pencil icon
+svg.fa.d-icon.d-icon-pencil-alt.svg-icon.svg-node {
+  display: none;
+}
+
+#current-user a:before {
+  content: "Profile";
+  color: $fcc-primary-color;
+}
+
+button.widget-button.btn-flat.edit.no-text.btn-icon:after,
+.post-info.edits:after {
+  content: "Edit";
+}
+
+.post-info.edits:hover {
+  text-decoration: underline;
+}
+
+// reply icon
+button.widget-button.btn.btn-default.create.no-text.btn-icon:before {
+  content: "Reply";
+}
+
+svg.fa.d-icon.d-icon-reply.svg-icon.svg-node {
+  display: none;
+}
+
+//tracking
+.select-kit.dropdown-select-box .dropdown-select-box-header:before {
+  content: "Tracking";
+}
+#ember341:before,
+#topic-footer-buttons .topic-notifications-button .btn:before {
+  content: "";
+}
+
+svg.fa.d-icon.d-icon-d-tracking.svg-icon.svg-string {
+  display: none;
+}
+
+// link
+
+button.widget-button.btn-flat.share.no-text.btn-icon:before {
+  content: "Share";
+}
+
+svg.fa.d-icon.d-icon-link.svg-icon.svg-node {
+  display: none;
+}
+
+// hear icon
+button.widget-button.btn-flat.toggle-like.like.no-text.btn-icon:before {
+  content: "Like";
+}
+
+button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:before {
+  content: "Unlike";
+}
+
+svg.fa.d-icon.d-icon-d-liked.svg-icon.svg-node,
+svg.fa.d-icon.d-icon-d-unliked.svg-icon.svg-node {
+  display: none;
+}
+
+//more
+button.widget-button.btn-flat.show-more-actions.no-text.btn-icon:before {
+  content: "More";
+}
+
+svg.fa.d-icon.d-icon-ellipsis-h.svg-icon.svg-node {
+  display: none;
+}
+
+//flag
+button.widget-button.btn-flat.create-flag.no-text.btn-icon:before {
+  content: "Flag";
+}
+
+svg.fa.d-icon.d-icon-flag.svg-icon.svg-node {
+  display: none;
+}
+
+//bookmark
+button.widget-button.btn-flat.bookmark.bookmarked.no-text.btn-icon:before {
+  content: "Clear Bookmark";
+}
+
+button.widget-button.btn-flat.bookmark.no-text.btn-icon:before {
+  content: "Bookmark";
+}
+svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-node.d-hover {
+  display: none;
+}
+
+//dropdown
+.map button.widget-button.btn.btn.no-text.btn-icon:before {
+  content: "Collapse";
+}
+
+.map-collapsed button.widget-button.btn.btn.no-text.btn-icon:before {
+  content: "Expand";
+}
+
+svg.fa.d-icon.d-icon-chevron-down.svg-icon.svg-node {
+  display: none;
+}
+
+//search
+.btn-primary.search-cta.btn.no-text.btn-icon:before {
+  content: "Search";
+}
+
+svg.fa.d-icon.d-icon-far-trash-alt.svg-icon.svg-node {
+  display: none;
+}
+
+// delete
+button.widget-button.btn-flat.delete.no-text.btn-icon:before {
+  content: "delete";
+}
+//remove icons on post footer
+svg.fa.d-icon.d-icon-chevron-up.svg-icon.svg-node,
+svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-node,
+svg.fa.d-icon.d-icon-d-muted.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-d-watching.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-d-regular.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-link.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-flag.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-reply.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-pencil-alt.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-search.svg-icon.svg-string {
+  display: none;
+}
 
 /*-----------------------------------brand specific customizationz--------*/
 img.avatar {
@@ -2476,4 +2700,13 @@ img.avatar {
 
 a:hover {
   text-decoration: underline;
+}
+
+.timeline-container .topic-timeline .timeline-handle {
+  border-radius: 0;
+}
+
+.badge-wrapper.bullet .badge-category-parent-bg,
+.badge-wrapper.bullet .badge-category-bg {
+  height: 13px;
 }
