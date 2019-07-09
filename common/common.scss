@@ -84,28 +84,12 @@ $fcc-blue: #99c9ff;
 $fcc-dark-blue: #002ead;
 $fcc-mid-blue: mix(#99c9ff, #002ead, 50%);
 
-$theme-base: hsl(
-  hue($tertiary) + $v-hue,
-  saturation($tertiary) + $v-saturation,
-  lightness($tertiary) + $v-lightness
-) !default;
-$theme-trim: $quaternary !default;
-
-$main-background: rgba($header_background, 0.9) !default;
-$secondary-background: rgba($main-background, 0.5) !default;
-$tertiary-background: rgba($main-background, 0.8) !default;
-$text-base: $fcc-quaternary-color !default;
-$trim-background: rgba($text-base, 0.1) !default;
-$border-color: desaturate($trim-background, 100%) !default;
-$highlight-color: rgba($text-base, 0.25) !default;
-$link-color: lighten($theme-base, 25%) !default;
-
 // settings -------------------------------
 
 $body-background-pattern-opacity: 0.25 !default;
 $body-background-gradient-opacity: 0.45 !default;
-$body-gradient-color-first: adjust-hue($theme-base, -23deg);
-$body-gradient-color-second: adjust-hue($theme-base, 15);
+$body-gradient-color-first: $tertiary;
+$body-gradient-color-second: $tertiary;
 $highlight-speed: #{$highlight_duration}s !default;
 $button-text-case: #{$button_text_case} !default;
 
@@ -143,7 +127,7 @@ h6 {
   ol {
     -webkit-text-stroke: 0.2px hsla(0, 0%, 50%, 1);
     color: desaturate(
-      darken(reverse-lightness(rgba($main-background, 1)), 32%),
+      darken(reverse-lightness(rgba($fcc-primary-background, 1)), 32%),
       100%
     );
 
@@ -159,7 +143,7 @@ h6 {
   h5,
   h6 {
     color: desaturate(
-      darken(reverse-lightness(rgba($main-background, 1)), 24%),
+      darken(reverse-lightness(rgba($fcc-primary-background, 1)), 24%),
       100%
     );
   }
@@ -266,7 +250,7 @@ span.deleted-posts,
 #reply-control.saving,
 .topic-post.deleted .topic-meta-data span,
 .topic-post.deleted .topic-meta-data a {
-  color: $text-base;
+  color: $fcc-quaternary-color;
 }
 
 .list-cell,
@@ -428,23 +412,26 @@ tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 .user-nav,
 .user-main .staff-counters {
   background: $fcc-secondary-background;
-  color: darken(desaturate(reverse-lightness($main-background), 100%), 10%);
+  color: darken(
+    desaturate(reverse-lightness($fcc-primary-background), 100%),
+    10%
+  );
 }
 
 .topic-meta-data,
 .topic-map,
 .reply .topic-meta-data,
 .deleted section.embedded-posts .topic-meta-data {
-  background: $tertiary-background;
-  color: desaturate(reverse-lightness($tertiary-background), 100%);
+  background: $fcc-tertiary-background;
+  color: desaturate(reverse-lightness($fcc-tertiary-background), 100%);
 }
 
 // background secondary background --------------
 
 .admin-controls,
 section.embedded-posts {
-  background: $secondary-background;
-  color: desaturate(reverse-lightness($secondary-background), 100%);
+  background: $fcc-secondary-background;
+  color: desaturate(reverse-lightness($fcc-secondary-background), 100%);
 }
 
 // background custom background -----------------
@@ -719,7 +706,7 @@ img.avatar,
 }
 
 .admin-detail {
-  border-left: solid 1px $border-color;
+  border-left: solid 1px $fcc-tertiary-background;
 }
 
 .category-boxes .category-box-inner,
@@ -736,9 +723,9 @@ tr {
 }
 
 .time-gap {
-  border-top: solid 1px $border-color;
-  border-left: solid 1px $border-color;
-  border-right: solid 1px $border-color;
+  border-top: solid 1px $fcc-tertiary-background;
+  border-left: solid 1px $fcc-tertiary-background;
+  border-right: solid 1px $fcc-tertiary-background;
 }
 // Margins ------------------------------------------------------------------------------------
 
@@ -1142,7 +1129,7 @@ section.post-menu-area {
 
 @keyframes Vincent-highlight {
   0% {
-    background-color: $highlight-color;
+    background-color: $fcc-quaternary-background;
   }
 }
 
@@ -1233,28 +1220,28 @@ body {
 // Links  -------------------------------------------------------------------------------------
 
 a {
-  color: $link-color;
+  color: $tertiary;
   transition: all 0.25s ease $i;
 
   &:visited,
   &:active,
   &.hashtag,
   &.hashtag:visited {
-    color: $link-color;
+    color: $tertiary;
   }
   &:hover {
-    color: invert-contrast($text-base) $i;
+    color: invert-contrast($fcc-quaternary-color) $i;
   }
   &.mention {
-    color: adjust-hue($link-color, 10deg);
+    color: adjust-hue($tertiary, 10deg);
   }
   &.mention-group {
-    color: adjust-hue($link-color, -10deg);
+    color: adjust-hue($tertiary, -10deg);
   }
 }
 
 .user-main .staff-counters a {
-  color: $link-color;
+  color: $tertiary;
 }
 
 // Buttons ------------------------------------------------------------------------------------
@@ -1263,7 +1250,7 @@ a {
   position: relative;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   transform: translate3d(0, 0, 0);
-  color: invert-contrast($text-base);
+  color: invert-contrast($fcc-quaternary-color);
   background-color: transparent;
 
   &:hover,
@@ -1276,17 +1263,17 @@ a {
   &:hover,
   &.btn-hover {
     background-color: $tertiary;
-    color: $text-base;
+    color: $fcc-quaternary-color;
   }
 
   &.btn-social:hover,
   &.btn-social.btn-hover {
     background-color: $fcc-secondary-background;
-    color: $text-base;
+    color: $fcc-quaternary-color;
   }
 
   &[href] {
-    color: invert-contrast($text-base);
+    color: invert-contrast($fcc-quaternary-color);
   }
 
   &:active,
@@ -1312,7 +1299,7 @@ a {
   }
 
   &.btn-primary {
-    color: $text-base;
+    color: $fcc-quaternary-color;
     background-color: $fcc-secondary-background;
 
     &:hover,
@@ -1323,13 +1310,13 @@ a {
   }
 
   &.btn-danger {
-    color: $text-base;
+    color: $fcc-quaternary-color;
     background-color: $danger;
 
     &:hover,
     &.btn-hover {
       background-color: lighten($danger, 15%);
-      color: $text-base;
+      color: $fcc-quaternary-color;
     }
   }
 }
@@ -1379,7 +1366,7 @@ a {
   height: 35px;
   width: 35px;
   border: $n;
-  box-shadow: inset 0 1px 1px lighten($theme-base, 15%);
+  box-shadow: inset 0 1px 1px lighten($tertiary, 15%);
   margin: 60px auto 0 auto;
 }
 
@@ -1390,7 +1377,7 @@ a {
 }
 
 .topic-list .posters a:first-child .avatar.latest:not(.single) {
-  box-shadow: 0 0 2px 3px $link-color;
+  box-shadow: 0 0 2px 3px $tertiary;
   top: 0;
 }
 
@@ -1399,7 +1386,7 @@ a {
 }
 
 .modal.history-modal ins {
-  color: lighten($theme-base, 15%);
+  color: lighten($tertiary, 15%);
   background: $fcc-mid-blue;
 }
 
@@ -1424,24 +1411,24 @@ a {
 }
 
 aside.onebox header a[href] {
-  color: darken($text-base, 30%);
+  color: darken($fcc-quaternary-color, 30%);
 }
 
 aside.onebox .onebox-body a[href],
 aside.onebox .onebox-body a[href]:visited {
-  color: $link-color;
+  color: $tertiary;
 }
 
 aside.onebox {
   border: none;
-  border-left: 4px solid darken($text-base, 35%);
+  border-left: 4px solid darken($fcc-quaternary-color, 35%);
   background: $fcc-secondary-color;
 }
 
 aside.quote .title,
 aside.quote blockquote,
 blockquote {
-  border-left: 3px solid $theme-base;
+  border-left: 3px solid $tertiary;
   background-color: $fcc-secondary-background;
 }
 
@@ -1471,7 +1458,7 @@ blockquote {
 .bootbox.modal {
   .modal-footer {
     a.btn-primary {
-      color: $text-base;
+      color: $fcc-quaternary-color;
     }
   }
 }
@@ -1615,7 +1602,7 @@ p.assigned-to {
 // Inputs -----------------------------------------------------------------------------
 
 $input-b0: #555 !default;
-$input-b: darken($theme-base, 10%) !default;
+$input-b: darken($tertiary, 10%) !default;
 
 input,
 select,
@@ -1878,7 +1865,7 @@ h1.page-not-found {
   opacity: 0.9;
 
   .d-icon {
-    color: $theme-base;
+    color: $tertiary;
   }
 
   &:hover,
@@ -1916,7 +1903,7 @@ section.post-actions:empty {
 
 .popup-menu {
   background-color: $fcc-tertiary-background;
-  border-color: $border-color;
+  border-color: $fcc-tertiary-background;
 }
 
 .d-header .menu-panel {
@@ -1945,11 +1932,11 @@ ul.nav.nav-pills {
 .layouts-nav-button > li > a.active,
 .admin-controls .nav.nav-pills li.active a {
   background: none;
-  color: $link-color $i;
+  color: $tertiary $i;
 }
 
 .moderator .topic-body {
-  border-left: 3px solid lighten(rgba(complement($theme-base), 0.65), 5%) $i;
+  border-left: 3px solid lighten(rgba(complement($tertiary), 0.65), 5%) $i;
 }
 
 .moderator .topic-meta-data {
@@ -2301,9 +2288,9 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 
 .embedded-posts .collapse-down,
 .embedded-posts .collapse-up {
-  color: $text-base;
+  color: $fcc-quaternary-color;
   background: $fcc-tertiary-background;
-  border-color: $border-color;
+  border-color: $fcc-tertiary-background;
 }
 //
 
@@ -2795,5 +2782,5 @@ a:hover {
 }
 
 body {
-  background: blue !important;
+  background: $tertiary !important;
 }
