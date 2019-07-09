@@ -73,10 +73,16 @@ $fcc-primary-color: mix($primary, $secondary, 100%);
 $fcc-secondary-color: mix($primary, $secondary, 93%);
 $fcc-tertiary-color: mix($primary, $secondary, 87%);
 $fcc-quaternary-color: mix($primary, $secondary, 80%);
+$fcc-disabeled-color: mix($primary, $secondary, 65%);
+$fcc-mid: mix($primary, $secondary, 50%);
+$fcc-disabeled-background: mix($primary, $secondary, 35%);
 $fcc-quaternary-background: mix($primary, $secondary, 20%);
 $fcc-tertiary-background: mix($primary, $secondary, 13%);
 $fcc-secondary-background: mix($primary, $secondary, 7%);
 $fcc-primary-background: mix($primary, $secondary, 0%);
+$fcc-blue: #99c9ff;
+$fcc-dark-blue: #002ead;
+$fcc-mid-blue: mix(#99c9ff, #002ead, 50%);
 
 $theme-base: hsl(
   hue($tertiary) + $v-hue,
@@ -88,7 +94,7 @@ $theme-trim: $quaternary !default;
 $main-background: rgba($header_background, 0.9) !default;
 $secondary-background: rgba($main-background, 0.5) !default;
 $tertiary-background: rgba($main-background, 0.8) !default;
-$text-base: reverse-lightness($secondary) !default;
+$text-base: $fcc-quaternary-color !default;
 $trim-background: rgba($text-base, 0.1) !default;
 $border-color: desaturate($trim-background, 100%) !default;
 $highlight-color: rgba($text-base, 0.25) !default;
@@ -365,11 +371,15 @@ nav.post-controls button.create {
   color: $tertiary;
 }
 
-// nav.post-controls button.create {
-//   fill: $tertiary $i;
-// }
+.d-editor-button-bar .btn .d-icon,
+.d-editor-button-bar .btn-default .d-icon {
+  color: $fcc-quaternary-color;
+}
+
+#reply-control .reply-to .d-icon,
 .hljs-comment,
-.hljs-doctag {
+.hljs-doctag,
+.select-kit.dropdown-select-box .select-kit-row .texts .desc {
   color: $fcc-quaternary-color;
 }
 // backgrounds --------------------------------------------------------------------------------
@@ -384,8 +394,8 @@ nav.post-controls button.create {
 .badge-notification.unread-posts,
 #reply-control.draft,
 #reply-control.saving {
-  background: mix($theme-base, $header_background, 75%);
-  color: contrast(mix($theme-base, $header_background, 75%));
+  background: $tertiary;
+  color: $fcc-secondary-background;
 }
 
 // background main background  ------------------
@@ -497,8 +507,9 @@ button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:hov
 .btn-primary.create.btn.btn-icon-text:hover,
 .discourse-no-touch .btn:hover,
 .discourse-no-touch .btn.btn-hover {
-  color: $fcc-secondary-background;
+  color: $fcc-secondary-background !important;
   background: $tertiary;
+  text-decoration: none;
 }
 
 .btn-primary.create.btn.btn-icon-text {
@@ -522,6 +533,55 @@ pre > code {
   color: $fcc-quaternary-color;
 }
 
+.menu-panel li a:hover,
+.menu-panel li a:focus,
+.menu-panel li.heading a:hover,
+.menu-panel li.heading a:focus {
+  color: $fcc-secondary-background !important;
+  background: $tertiary;
+  text-decoration: none;
+}
+
+.composer-popup {
+  background: $fcc-dark-blue;
+}
+
+.composer-popup a.close {
+  color: $fcc-quaternary-color;
+}
+
+textarea::placeholder,
+input#reply-title::placeholder {
+  color: $fcc-disabeled-color;
+}
+
+#topic-progress .bg {
+  background-color: $fcc-dark-blue;
+  border-color: $fcc-dark-blue;
+}
+
+#topic-progress {
+  border-color: $fcc-dark-blue;
+}
+
+.badge.badge-notification {
+  background-color: $fcc-mid-blue;
+}
+
+.badge-notification.clicks {
+  background-color: $fcc-quaternary-background;
+}
+
+.select-kit.dropdown-select-box.toolbar-popup-menu-options .select-kit-row {
+  background: $fcc-quaternary-background;
+}
+.select-kit.dropdown-select-box.composer-actions .select-kit-header:hover,
+.select-kit.dropdown-select-box.composer-actions .select-kit-header:focus {
+  background-color: $tertiary;
+}
+
+.modal-backdrop {
+}
 // borders  ----------------------------------------------------------------------------------
 
 // border border none ---------------------------
@@ -1094,43 +1154,6 @@ body {
   background-color: $fcc-secondary-background;
 }
 
-#background,
-body:before {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-body:before {
-  display: block;
-  content: "";
-  width: 100vw;
-  z-index: -2;
-  opacity: $body-background-gradient-opacity;
-  background: linear-gradient(
-    to top left,
-    $body-gradient-color-first,
-    $body-gradient-color-second
-  );
-}
-
-#background {
-  background: $v-theme-background;
-  background-position: center center;
-  background-size: cover;
-  z-index: -1;
-  opacity: $body-background-pattern-opacity;
-  min-width: 100vw;
-  width: auto;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-}
-
 // fix IE EDGE backgrounds
 
 @supports (-ms-ime-align: auto) {
@@ -1138,16 +1161,12 @@ body:before {
     z-index: 1;
   }
 
-  #background {
-    z-index: 2;
-  }
-
   #main {
     z-index: 4;
   }
 
   .fixed-modal {
-    background: rgba(64, 64, 64, 0.83);
+    background: $fcc-tertiary-background;
   }
 
   .bootbox.modal {
@@ -1173,7 +1192,7 @@ body:before {
   }
 
   .fixed-modal {
-    background: rgba(64, 64, 64, 0.83);
+    background: $fcc-tertiary-background;
   }
 
   .bootbox.modal {
@@ -1262,7 +1281,7 @@ a {
 
   &.btn-social:hover,
   &.btn-social.btn-hover {
-    background-color: $border-color;
+    background-color: $fcc-secondary-background;
     color: $text-base;
   }
 
@@ -1272,7 +1291,7 @@ a {
 
   &:active,
   &.btn-active {
-    background: lighten($theme-base, 15%);
+    background: $tertiary;
   }
 
   &[disabled],
@@ -1294,7 +1313,7 @@ a {
 
   &.btn-primary {
     color: $text-base;
-    background-color: $border-color;
+    background-color: $fcc-secondary-background;
 
     &:hover,
     &.btn-hover {
@@ -1366,7 +1385,7 @@ a {
 
 .category-boxes .category-box-inner:hover,
 .category-boxes-with-topics .category-box-inner:hover {
-  background: $secondary-background;
+  background: $fcc-primary-background;
   cursor: pointer;
 }
 
@@ -1381,7 +1400,7 @@ a {
 
 .modal.history-modal ins {
   color: lighten($theme-base, 15%);
-  background: darken($theme-base, 25%);
+  background: $fcc-mid-blue;
 }
 
 .read-state {
@@ -1416,18 +1435,18 @@ aside.onebox .onebox-body a[href]:visited {
 aside.onebox {
   border: none;
   border-left: 4px solid darken($text-base, 35%);
-  background: $trim-background;
+  background: $fcc-secondary-color;
 }
 
 aside.quote .title,
 aside.quote blockquote,
 blockquote {
   border-left: 3px solid $theme-base;
-  background-color: $trim-background;
+  background-color: $fcc-secondary-background;
 }
 
 .modal-backdrop {
-  background-color: #222;
+  background-color: $fcc-secondary-background;
 }
 
 #banner {
@@ -1437,16 +1456,16 @@ blockquote {
 }
 
 .modal.history-modal span.edit-reason {
-  background-color: $border-color;
+  background-color: $fcc-tertiary-background;
 }
 
 .directory {
-  background: $main-background;
+  background: $fcc-tertiary-background;
   padding: 2em;
 }
 
 .directory table tr.me td {
-  background: $border-color;
+  background: $fcc-tertiary-background;
 }
 
 .bootbox.modal {
@@ -1458,24 +1477,24 @@ blockquote {
 }
 
 .show-more.has-topics .alert {
-  background: lighten($main-background, 10%);
+  background: $fcc-tertiary-background;
 }
 
 .topic-area .presence-users {
   background: transparent;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $fcc-tertiary-background;
   width: auto;
   display: inline-block;
 }
 
 .timeline-container .topic-timeline .timeline-scrollarea {
-  border-color: rgba(invert($header_background), 0.18);
+  border-color: $fcc-quaternary-background;
 }
 
 // TESTS --------------------------------------------------------------------------------------
 
 .container.show-badge {
-  background: $main-background;
+  background: $fcc-primary-background;
   padding: 2em;
   min-height: 70vh;
 }
@@ -1486,14 +1505,14 @@ blockquote {
 }
 
 .timeline-container .topic-timeline .timeline-handle {
-  background: desaturate($theme-base, 20%);
+  background: $tertiary;
 }
 
 .select-box-kit .select-box-kit-row.is-selected,
 .select-box-kit .select-kit-row.is-selected,
 .select-kit .select-box-kit-row.is-selected,
 .select-kit .select-kit-row.is-selected {
-  background: darken($theme-base, 25%);
+  background: $fcc-mid-blue;
 }
 
 .d-icon.d-icon-d-tracking,
@@ -1532,7 +1551,7 @@ span.badge-category-parent-bg {
 .groups-table,
 .groups-table thead,
 .groups-table tbody tr:nth-of-type(even) {
-  background: $main-background;
+  background: $fcc-primary-background;
 }
 
 .groups-table tr td,
@@ -1569,7 +1588,7 @@ button.post-retort:first-of-type {
 
 #whos-online {
   padding: 1em 0.75em;
-  background: $main-background;
+  background: $fcc-primary-background;
   margin-bottom: 1em;
 }
 
@@ -1708,7 +1727,7 @@ textarea {
 .tag-chooser {
   &.select2-dropdown-open,
   &.select2-container-active {
-    border-color: $input-b;
+    border-color: $tertiary;
   }
 }
 
@@ -1720,18 +1739,18 @@ textarea {
 }
 
 .select2-container-multi.select2-container-active .select2-choices {
-  border-color: $input-b;
+  border-color: $tertiary;
 }
 
 #reply-control .tag-chooser.select2-dropdown-open,
 #reply-control .tag-chooser.select2-container-active {
-  border-color: $input-b;
+  border-color: $tertiary;
 }
 
 // date chooser navigation arrows
 .pika-prev,
 .pika-next {
-  background-color: $input-b;
+  background-color: $tertiary;
 }
 
 div.ac-wrap input[type="text"] {
@@ -1740,7 +1759,7 @@ div.ac-wrap input[type="text"] {
 
 .select-kit.combo-box.category-drop .select-kit-body,
 .select-kit.combo-box.tag-drop .select-kit-body {
-  border: 1px solid $input-b0;
+  border: 1px solid $fcc-disabeled-background;
   box-shadow: none;
 }
 
@@ -1758,12 +1777,12 @@ div.ac-wrap input[type="text"] {
   .group-logs,
   .group-edit,
   .group-logs-controls button {
-    background: $main-background;
+    background: $fcc-primary-background;
   }
 
   .group-nav li .active a,
   .group-nav li .active i {
-    color: $header_primary;
+    color: $fcc-primary-color;
   }
 
   .group-members thead th,
@@ -1802,13 +1821,13 @@ div.ac-wrap input[type="text"] {
   }
 
   .group-activity-nav li a.active {
-    background-color: #4b4b4b;
+    background-color: $fcc-disabeled-background;
     font-weight: inherit;
   }
 
   .group-post {
     padding: 1em;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $fcc-tertiary-background;
   }
 
   .group-edit {
@@ -1829,11 +1848,11 @@ div.ac-wrap input[type="text"] {
 // 404 page  -------------------------------------------------------------------
 
 .page-not-found-topics {
-  background: $main-background;
+  background: $fcc-primary-background;
   padding: 1em;
 
   & + .row {
-    background: $main-background;
+    background: $fcc-primary-background;
     padding: 0 1em;
     margin-top: 1em;
   }
@@ -1907,7 +1926,7 @@ section.post-actions:empty {
 }
 
 .admin-contents.dashboard tbody {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba($fcc-primary-color, 0.1);
 }
 
 ul.nav.nav-pills {
@@ -2078,12 +2097,13 @@ html.mobile-view.mobile-device {
 }
 
 .select-kit .select-kit-row.is-highlighted {
-  background: rgba($theme-base, 0.35) $i;
+  background: $fcc-secondary-color $i;
+  color: $fcc-secondary-background;
 }
 
 // centered content
 
-$q-background: rgba(contrast($text-base), 0.5) !default;
+$q-background: rgba($fcc-primary-background, 0.5) !default;
 
 .cooked,
 .post-menu-area,
@@ -2303,7 +2323,7 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 
 @if $dark_background_overlay == "true" {
   body:before {
-    background: black;
+    background: $fcc-primary-background;
     opacity: 0.7;
     z-index: 0;
   }
@@ -2496,6 +2516,9 @@ $q-background: rgba(contrast($text-base), 0.5) !default;
 // }
 /*----------------------------------navigation----------------------------*/
 
+#current-user a:before {
+  content: "";
+}
 @media screen and (min-width: 500px) {
   .d-header {
     height: 38px;
@@ -2551,11 +2574,6 @@ svg.fa.d-icon.d-icon-pencil-alt.svg-icon.svg-node {
   display: none;
 }
 
-#current-user a:before {
-  content: "Profile";
-  color: $fcc-primary-color;
-}
-
 button.widget-button.btn-flat.edit.no-text.btn-icon:after,
 .post-info.edits:after {
   content: "Edit";
@@ -2575,13 +2593,15 @@ svg.fa.d-icon.d-icon-reply.svg-icon.svg-node {
 }
 
 //tracking
-.select-kit.dropdown-select-box .dropdown-select-box-header:before {
+.widget-component-connector
+  .select-kit.dropdown-select-box
+  .dropdown-select-box-header:before {
   content: "Tracking";
 }
-#ember341:before,
-#topic-footer-buttons .topic-notifications-button .btn:before {
-  content: "";
-}
+// .options.select-kit.dropdown-select-box .dropdown-select-box-header:before,
+// #topic-footer-buttons .topic-notifications-button .btn:before {
+//   content: "";
+// }
 
 svg.fa.d-icon.d-icon-d-tracking.svg-icon.svg-string {
   display: none;
@@ -2668,6 +2688,9 @@ button.widget-button.btn-flat.delete.no-text.btn-icon:before {
   content: "delete";
 }
 //remove icons on post footer
+svg.fa.d-icon.d-icon-chart-bar.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-magic.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-caret-right.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-chevron-up.svg-icon.svg-node,
 svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-node,
 svg.fa.d-icon.d-icon-d-muted.svg-icon.svg-string,
@@ -2691,7 +2714,7 @@ img.avatar {
 }
 
 .d-header {
-  background: $header_background;
+  background: $fcc-primary-background;
 }
 
 .badge-category-bg {
@@ -2709,4 +2732,68 @@ a:hover {
 .badge-wrapper.bullet .badge-category-parent-bg,
 .badge-wrapper.bullet .badge-category-bg {
   height: 13px;
+}
+
+// after header color testing
+.after-header {
+  height: 20px;
+  width: 100%;
+  background: green;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.after-header div {
+  height: 20px;
+  flex: 1;
+  z-index: 200;
+}
+
+.t1 {
+  background-color: $fcc-primary-color;
+}
+.t2 {
+  background-color: $fcc-secondary-color;
+}
+.t3 {
+  background-color: $fcc-tertiary-color;
+}
+.t4 {
+  background-color: $fcc-quaternary-color;
+}
+.t5 {
+  background-color: $fcc-disabeled-color;
+}
+.t6 {
+  background-color: $fcc-mid;
+}
+.t7 {
+  background-color: $fcc-disabeled-background;
+}
+
+.t8 {
+  background-color: $fcc-quaternary-background;
+}
+.t9 {
+  background-color: $fcc-tertiary-background;
+}
+.t10 {
+  background-color: $fcc-secondary-background;
+}
+.t11 {
+  background-color: $fcc-primary-background;
+}
+.t12 {
+  background-color: $fcc-blue;
+}
+.t13 {
+  background-color: $fcc-dark-blue;
+}
+.t14 {
+  background-color: $fcc-mid-blue;
+}
+
+body {
+  background: blue !important;
 }
