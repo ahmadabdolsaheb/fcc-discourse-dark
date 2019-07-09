@@ -1,45 +1,5 @@
 // functions  --------------------------------------------------------------------------------
 
-// Calculate brightness value
-@function brightness($color) {
-  @return (red($color) + green($color) + blue($color)) / (255 * 3);
-}
-
-// to base color
-@function brightness_ratio($base, $color) {
-  @return abs(brightness($base) - brightness($color));
-}
-
-// Compare colors to higher contrast
-@function contrast($base, $color1: white, $color2: black) {
-  @return if(
-    brightness_ratio($base, $color1) > brightness_ratio($base, $color2),
-    $color1,
-    $color2
-  );
-}
-
-// Compare colors to lower contrast (inverting the former contrast function)
-@function invert-contrast($base, $color1: white, $color2: black) {
-  @return if(
-    brightness_ratio($base, $color1) > brightness_ratio($base, $color2),
-    $color2,
-    $color1
-  );
-}
-
-// reverse lightness
-@function reverse-lightness($color) {
-  $result: 0;
-  $value: lightness($color);
-  @if $value >= 50 {
-    $result: scale-color($color, $lightness: -$value);
-  } @else {
-    $result: scale-color($color, $lightness: 100% - $value);
-  }
-  @return $result;
-}
-
 // Variables  ---------------------------------------------------------------------------------
 
 /*
@@ -126,10 +86,7 @@ h6 {
   ul,
   ol {
     -webkit-text-stroke: 0.2px hsla(0, 0%, 50%, 1);
-    color: desaturate(
-      darken(reverse-lightness(rgba($fcc-primary-background, 1)), 32%),
-      100%
-    );
+    color: $fcc-disabeled-background;
 
     a {
       -webkit-text-stroke: 0;
@@ -142,10 +99,7 @@ h6 {
   h4,
   h5,
   h6 {
-    color: desaturate(
-      darken(reverse-lightness(rgba($fcc-primary-background, 1)), 24%),
-      100%
-    );
+    color: $fcc-disabeled-background;
   }
 }
 
@@ -412,10 +366,7 @@ tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 .user-nav,
 .user-main .staff-counters {
   background: $fcc-secondary-background;
-  color: darken(
-    desaturate(reverse-lightness($fcc-primary-background), 100%),
-    10%
-  );
+  color: $fcc-tertiary-color;
 }
 
 .topic-meta-data,
@@ -423,7 +374,7 @@ tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 .reply .topic-meta-data,
 .deleted section.embedded-posts .topic-meta-data {
   background: $fcc-tertiary-background;
-  color: desaturate(reverse-lightness($fcc-tertiary-background), 100%);
+  color: $fcc-tertiary-color;
 }
 
 // background secondary background --------------
@@ -431,7 +382,7 @@ tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 .admin-controls,
 section.embedded-posts {
   background: $fcc-secondary-background;
-  color: desaturate(reverse-lightness($fcc-secondary-background), 100%);
+  color: $fcc-secondary-color;
 }
 
 // background custom background -----------------
@@ -1170,10 +1121,6 @@ body {
     z-index: 1;
   }
 
-  #background {
-    z-index: 2;
-  }
-
   #main {
     z-index: 4;
   }
@@ -1194,10 +1141,6 @@ body {
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   body:before {
     z-index: 1;
-  }
-
-  #background {
-    z-index: 2;
   }
 
   #main {
@@ -1230,7 +1173,7 @@ a {
     color: $tertiary;
   }
   &:hover {
-    color: invert-contrast($fcc-quaternary-color) $i;
+    color: $fcc-dark-blue $i;
   }
   &.mention {
     color: adjust-hue($tertiary, 10deg);
@@ -1250,7 +1193,7 @@ a {
   position: relative;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   transform: translate3d(0, 0, 0);
-  color: invert-contrast($fcc-quaternary-color);
+  color: $fcc-quaternary-background;
   background-color: transparent;
 
   &:hover,
@@ -1273,7 +1216,7 @@ a {
   }
 
   &[href] {
-    color: invert-contrast($fcc-quaternary-color);
+    color: $fcc-quaternary-background;
   }
 
   &:active,
@@ -2315,19 +2258,11 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
     z-index: 0;
   }
 
-  #background {
-    opacity: 0.85;
-  }
-
   // fix IE EDGE backgrounds
 
   @supports (-ms-ime-align: auto) {
     body:before {
       z-index: 2;
-    }
-
-    #background {
-      z-index: 1;
     }
   }
 
@@ -2335,19 +2270,11 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
     body:before {
       z-index: 2;
     }
-
-    #background {
-      z-index: 1;
-    }
   }
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     body:before {
       z-index: 2;
-    }
-
-    #background {
-      z-index: 1;
     }
   }
 }
@@ -2782,5 +2709,5 @@ a:hover {
 }
 
 body {
-  background: $tertiary !important;
+  background: blue !important;
 }
