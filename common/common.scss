@@ -29,9 +29,9 @@ $fcc-primary-color: mix($primary, $secondary, 100%);
 $fcc-secondary-color: mix($primary, $secondary, 93%);
 $fcc-tertiary-color: mix($primary, $secondary, 87%);
 $fcc-quaternary-color: mix($primary, $secondary, 80%);
-$fcc-disabeled-color: mix($primary, $secondary, 65%);
+$fcc-disabled-color: mix($primary, $secondary, 65%);
 $fcc-mid: mix($primary, $secondary, 50%);
-$fcc-disabeled-background: mix($primary, $secondary, 35%);
+$fcc-disabled-background: mix($primary, $secondary, 35%);
 $fcc-quaternary-background: mix($primary, $secondary, 20%);
 $fcc-tertiary-background: mix($primary, $secondary, 13%);
 $fcc-secondary-background: mix($primary, $secondary, 7%);
@@ -45,8 +45,6 @@ $body-background-pattern-opacity: 0.25 !default;
 $body-background-gradient-opacity: 0.45 !default;
 $body-gradient-color-first: $fcc-blue-color;
 $body-gradient-color-second: $fcc-blue-color;
-$highlight-speed: #{$highlight_duration}s !default;
-$button-text-case: #{$button_text_case} !default;
 
 // fonts --------------------------------------------------------------------------------------
 
@@ -80,8 +78,8 @@ h6 {
   p,
   ul,
   ol {
-    -webkit-text-stroke: 0.2px $fcc-disabeled-background;
-    color: $fcc-disabeled-background;
+    -webkit-text-stroke: 0.2px $fcc-disabled-background;
+    color: $fcc-disabled-background;
 
     a {
       -webkit-text-stroke: 0;
@@ -94,7 +92,7 @@ h6 {
   h4,
   h5,
   h6 {
-    color: $fcc-disabeled-background;
+    color: $fcc-disabled-background;
   }
 }
 
@@ -315,6 +313,14 @@ nav.post-controls button.create {
 .select-kit.dropdown-select-box .select-kit-row .texts .desc {
   color: $fcc-quaternary-color;
 }
+
+.fps-result .blurb {
+  color: $fcc-quaternary-color;
+}
+
+.search-link .blurb {
+  color: $fcc-quaternary-color;
+}
 // backgrounds --------------------------------------------------------------------------------
 
 // background theme base -------------------------
@@ -344,7 +350,6 @@ ul.general,
 .category-list,
 .category-list tbody tr:nth-of-type(even),
 .search-container,
-.search-advanced-options,
 .user-stream-item.item,
 tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 .category-boxes .category-box-inner,
@@ -360,10 +365,14 @@ tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 #user-card .card-content,
 .user-nav,
 .user-main .staff-counters {
-  background: $fcc-secondary-background;
+  background: $fcc-tertiary-background;
   color: $fcc-tertiary-color;
 }
 
+.search-advanced-options {
+  background: $fcc-quaternary-background;
+  color: $fcc-quaternary-color;
+}
 .topic-meta-data,
 .topic-map,
 .reply .topic-meta-data,
@@ -440,18 +449,18 @@ button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:hov
 .btn-primary.create.btn.btn-icon-text:hover,
 .discourse-no-touch .btn:hover,
 .discourse-no-touch .btn.btn-hover {
-  color: $fcc-secondary-background $i;
+  color: $fcc-secondary-background;
   background: $fcc-blue-color;
   text-decoration: $n;
 }
 
-.btn-primary.create.btn.btn-icon-text {
-  background: $fcc-secondary-background;
-}
+// .btn-primary.create.btn.btn-icon-text {
+//   background: $fcc-secondary-background;
+// }
 
 .search-container .search-advanced-sidebar .search-advanced-title,
 .search-container .search-advanced-sidebar .search-advanced-filters {
-  background: $fcc-tertiary-background;
+  background: $fcc-quaternary-background;
 }
 
 p > code,
@@ -485,7 +494,7 @@ pre > code {
 
 textarea::placeholder,
 input#reply-title::placeholder {
-  color: $fcc-disabeled-color;
+  color: $fcc-disabled-color;
 }
 
 #topic-progress .bg {
@@ -513,8 +522,6 @@ input#reply-title::placeholder {
   background-color: $fcc-blue-color;
 }
 
-.modal-backdrop {
-}
 // borders  ----------------------------------------------------------------------------------
 
 // border border $n ---------------------------
@@ -672,6 +679,10 @@ tr {
   border-top: solid 1px $fcc-tertiary-background;
   border-left: solid 1px $fcc-tertiary-background;
   border-right: solid 1px $fcc-tertiary-background;
+}
+
+.search-container .search-advanced .search-info {
+  border-bottom: 3px solid $fcc-disabled-background;
 }
 // Margins ------------------------------------------------------------------------------------
 
@@ -1070,7 +1081,7 @@ section.post-menu-area {
 
 .topic-list > tbody > tr.highlighted,
 .topic-body.highlighted {
-  animation: Vincent-highlight $highlight-speed ease-in-out;
+  animation: Vincent-highlight 1.5 ease-in-out;
 }
 
 @keyframes Vincent-highlight {
@@ -1168,7 +1179,7 @@ a {
     color: $fcc-blue-color;
   }
   &:hover {
-    color: $fcc-dark-background $i;
+    color: $fcc-primary-color $i;
   }
   &.mention {
     color: adjust-hue($fcc-blue-color, 10deg);
@@ -1188,8 +1199,9 @@ a {
   position: relative;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   transform: translate3d(0, 0, 0);
-  color: $fcc-quaternary-background;
+  color: $fcc-quaternary-color;
   background-color: transparent;
+  border: 2px solid $fcc-quaternary-color;
 
   &:hover,
   &:focus {
@@ -1201,13 +1213,14 @@ a {
   &:hover,
   &.btn-hover {
     background-color: $fcc-blue-color;
-    color: $fcc-quaternary-color;
+    color: $fcc-quaternary-background;
+    border: 2px solid $fcc-blue-color;
   }
 
   &.btn-social:hover,
   &.btn-social.btn-hover {
-    background-color: $fcc-secondary-background;
-    color: $fcc-quaternary-color;
+    background-color: $fcc-blue-color;
+    color: $fcc-quaternary-background;
   }
 
   &[href] {
@@ -1237,9 +1250,8 @@ a {
   }
 
   &.btn-primary {
-    color: $fcc-quaternary-color;
-    background-color: $fcc-secondary-background;
-
+    color: $fcc-tertiary-color;
+    background-color: $fcc-tertiary-background;
     &:hover,
     &.btn-hover {
       background-color: $fcc-blue-color;
@@ -1264,6 +1276,19 @@ a {
   border: $n;
   box-shadow: $n;
   background: $n;
+}
+
+.select-kit.dropdown-select-box .dropdown-select-box-header {
+  color: $fcc-quaternary-color;
+  background-color: transparent;
+  border: 2px solid $fcc-quaternary-color;
+  &:hover,
+  &:focus,
+  &.btn-hover {
+    background-color: $fcc-blue-color;
+    color: $fcc-quaternary-background;
+    border: 2px solid $fcc-blue-color;
+  }
 }
 
 // Media queries ------------------------------------------------------------------------------
@@ -1341,7 +1366,7 @@ a {
 }
 
 .menu-panel.drop-down {
-  border-bottom: 1px solid $fcc-disabeled-background;
+  border-bottom: 1px solid $fcc-disabled-background;
 }
 
 .modal-inner-container {
@@ -1359,8 +1384,9 @@ aside.onebox .onebox-body a[href]:visited {
 
 aside.onebox {
   border: $n;
-  border-left: 4px solid darken($fcc-quaternary-color, 35%);
-  background: $fcc-secondary-color;
+  border-left: 4px solid $fcc-quaternary-color;
+  color: $fcc-quaternary-color;
+  background: $fcc-quaternary-background;
 }
 
 aside.quote .title,
@@ -1564,7 +1590,7 @@ input {
   &[type="tel"],
   &[type="color"] {
     &:focus {
-      border-color: $fcc-disabeled-background;
+      border-color: $fcc-disabled-background;
       border-bottom-color: $fcc-mid-blue;
       box-shadow: $n;
     }
@@ -1573,7 +1599,7 @@ input {
 
 textarea {
   &:focus {
-    border-color: $fcc-disabeled-background;
+    border-color: $fcc-disabled-background;
     border-bottom-color: $fcc-mid-blue;
     box-shadow: $n;
   }
@@ -1586,7 +1612,7 @@ textarea {
 }
 
 .select2-drop-active {
-  border-color: $fcc-disabeled-background;
+  border-color: $fcc-disabled-background;
   border-top-color: $fcc-mid-blue;
 }
 
@@ -1624,13 +1650,13 @@ textarea {
 
 .select2-container {
   &.select2-container-active {
-    border-color: $fcc-disabeled-background;
+    border-color: $fcc-disabled-background;
     border-bottom-color: $fcc-mid-blue;
   }
 }
 
 .select2-dropdown-open a.select2-choice {
-  border-color: $fcc-disabeled-background;
+  border-color: $fcc-disabled-background;
   border-bottom-color: $fcc-mid-blue;
 }
 
@@ -1680,7 +1706,7 @@ div.ac-wrap input[type="text"] {
 
 .select-kit.combo-box.category-drop .select-kit-body,
 .select-kit.combo-box.tag-drop .select-kit-body {
-  border: 1px solid $fcc-disabeled-background;
+  border: 1px solid $fcc-disabled-background;
   box-shadow: $n;
 }
 
@@ -1742,7 +1768,7 @@ div.ac-wrap input[type="text"] {
   }
 
   .group-activity-nav li a.active {
-    background-color: $fcc-disabeled-background;
+    background-color: $fcc-disabled-background;
     font-weight: inherit;
   }
 
@@ -1843,7 +1869,7 @@ section.post-actions:empty {
 .d-header .menu-panel {
   box-shadow: $n;
   background-color: $fcc-tertiary-background;
-  border-top: 1px solid $fcc-disabeled-background;
+  border-top: 1px solid $fcc-disabled-background;
 }
 
 .admin-contents.dashboard tbody {
@@ -1870,7 +1896,7 @@ ul.nav.nav-pills {
 }
 
 .moderator .topic-body {
-  border-left: 3px solid $fcc-disabeled-color $i;
+  border-left: 3px solid $fcc-disabled-color $i;
 }
 
 .moderator .topic-meta-data {
@@ -2019,6 +2045,14 @@ html.mobile-view.mobile-device {
 
 .select-kit .select-kit-row.is-highlighted {
   background: $fcc-secondary-color $i;
+  color: $fcc-primary-background;
+}
+
+.select-kit .select-kit-row.is-highlighted .texts .name {
+  color: $fcc-primary-background;
+}
+
+.select-kit .select-kit-row.is-highlighted .texts .desc {
   color: $fcc-secondary-background;
 }
 
@@ -2242,34 +2276,6 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
   }
 }
 
-@if $dark_background_overlay == "true" {
-  body:before {
-    background: $fcc-primary-background;
-    opacity: 0.7;
-    z-index: 0;
-  }
-
-  // fix IE EDGE backgrounds
-
-  @supports (-ms-ime-align: auto) {
-    body:before {
-      z-index: 2;
-    }
-  }
-
-  @supports (-ms-accelerator: true) {
-    body:before {
-      z-index: 2;
-    }
-  }
-
-  @media all and (-ms-high-contrast: $n), (-ms-high-contrast: active) {
-    body:before {
-      z-index: 2;
-    }
-  }
-}
-
 #topic-title .title-wrapper {
   padding: 1em;
   margin-top: 1em;
@@ -2418,6 +2424,10 @@ button.widget-button.btn-flat.toggle-like.like.no-text.btn-icon:before {
   content: "Like";
 }
 
+button.widget-button.btn-flat.button-count.like-count.highlight-action.my-likes.btn-icon-text:after {
+  content: " likes";
+}
+
 button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:before {
   content: "Unlike";
 }
@@ -2484,6 +2494,8 @@ button.widget-button.btn-flat.delete.no-text.btn-icon:before {
   content: "delete";
 }
 //remove icons on post footer
+svg.fa.d-icon.d-icon-plus.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-envelope.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-chart-bar.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-magic.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-caret-right.svg-icon.svg-string,
