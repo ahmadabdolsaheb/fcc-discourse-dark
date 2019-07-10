@@ -1,11 +1,17 @@
 // functions  --------------------------------------------------------------------------------
+@function fcc-blue-lightness-switch($color) {
+  @if $color == mix(#002ead, #002ead, 100%) {
+    @return #99c9ff;
+  }
+  @return #002ead;
+}
 
 // Variables  ---------------------------------------------------------------------------------
 
 /*
 $primary
 $secondary
-$tertiary
+$fcc-blue-color
 $quaternary
 $header_background
 $header_primary
@@ -17,16 +23,6 @@ $love
 
 $n: none;
 $i: !important;
-
-// Basics -------------------------------
-
-$v-font-weight: 300 !default;
-$v-font-size: 1.1em !default;
-$v-theme-background: url(#{$theme_background}) !default;
-$v-hue: 0 !default;
-$v-saturation: -25 !default;
-$v-lightness: 0 !default;
-$V-page-max-width: 95vw !default;
 
 // palette colors -------------------------------
 $fcc-primary-color: mix($primary, $secondary, 100%);
@@ -40,16 +36,15 @@ $fcc-quaternary-background: mix($primary, $secondary, 20%);
 $fcc-tertiary-background: mix($primary, $secondary, 13%);
 $fcc-secondary-background: mix($primary, $secondary, 7%);
 $fcc-primary-background: mix($primary, $secondary, 0%);
-$fcc-blue: #99c9ff;
-$fcc-dark-blue: #002ead;
-$fcc-mid-blue: mix(#99c9ff, #002ead, 50%);
+$fcc-blue-color: $tertiary;
+$fcc-dark-background: fcc-blue-lightness-switch($fcc-blue-color);
+$fcc-mid-blue: mix($fcc-blue-color, $fcc-dark-background, 50%);
 
 // settings -------------------------------
-
 $body-background-pattern-opacity: 0.25 !default;
 $body-background-gradient-opacity: 0.45 !default;
-$body-gradient-color-first: $tertiary;
-$body-gradient-color-second: $tertiary;
+$body-gradient-color-first: $fcc-blue-color;
+$body-gradient-color-second: $fcc-blue-color;
 $highlight-speed: #{$highlight_duration}s !default;
 $button-text-case: #{$button_text_case} !default;
 
@@ -69,11 +64,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: $v-font-weight;
+  font-weight: 300;
 }
 
 .cooked {
-  font-size: $v-font-size;
+  font-size: 1.1em;
   line-height: 1.65;
   letter-spacing: 0.3px;
   font-variant-ligatures: no-common-ligatures;
@@ -85,7 +80,7 @@ h6 {
   p,
   ul,
   ol {
-    -webkit-text-stroke: 0.2px hsla(0, 0%, 50%, 1);
+    -webkit-text-stroke: 0.2px $fcc-disabeled-background;
     color: $fcc-disabeled-background;
 
     a {
@@ -108,7 +103,7 @@ h6 {
 }
 
 #banner #banner-content span {
-  text-decoration: none;
+  text-decoration: $n;
 }
 
 .main-content .nav-drop .selected-nav-item {
@@ -129,7 +124,7 @@ address,
 dfn,
 strong {
   font-size: 90%;
-  -webkit-text-stroke: none;
+  -webkit-text-stroke: $n;
 }
 
 #login-buttons button {
@@ -158,7 +153,7 @@ html {
 }
 
 * {
-  outline-color: $tertiary $i;
+  outline-color: $fcc-blue-color $i;
 }
 
 // colors -------------------------------------------------------------------------------------
@@ -264,7 +259,7 @@ table th {
 .coldmap-high,
 .coldmap-med,
 .coldmap-low {
-  color: $fcc-quaternary-color !important;
+  color: $fcc-quaternary-color $i;
 }
 
 div.education {
@@ -306,7 +301,7 @@ nav.post-controls button {
 // nav.post-controls button.create
 a.topic-featured-link,
 nav.post-controls button.create {
-  color: $tertiary;
+  color: $fcc-blue-color;
 }
 
 .d-editor-button-bar .btn .d-icon,
@@ -332,7 +327,7 @@ nav.post-controls button.create {
 .badge-notification.unread-posts,
 #reply-control.draft,
 #reply-control.saving {
-  background: $tertiary;
+  background: $fcc-blue-color;
   color: $fcc-secondary-background;
 }
 
@@ -396,10 +391,10 @@ button.ok:hover {
 }
 
 .discourse-no-touch .sortable:hover {
-  background-color: $tertiary;
+  background-color: $fcc-blue-color;
   color: $fcc-primary-background;
 }
-// background none ------------------------------
+// background $n ------------------------------
 
 .nav-pills > li:not(.active) > a:hover,
 .layouts-nav-button > li > a:hover,
@@ -445,9 +440,9 @@ button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:hov
 .btn-primary.create.btn.btn-icon-text:hover,
 .discourse-no-touch .btn:hover,
 .discourse-no-touch .btn.btn-hover {
-  color: $fcc-secondary-background !important;
-  background: $tertiary;
-  text-decoration: none;
+  color: $fcc-secondary-background $i;
+  background: $fcc-blue-color;
+  text-decoration: $n;
 }
 
 .btn-primary.create.btn.btn-icon-text {
@@ -475,13 +470,13 @@ pre > code {
 .menu-panel li a:focus,
 .menu-panel li.heading a:hover,
 .menu-panel li.heading a:focus {
-  color: $fcc-secondary-background !important;
-  background: $tertiary;
-  text-decoration: none;
+  color: $fcc-secondary-background $i;
+  background: $fcc-blue-color;
+  text-decoration: $n;
 }
 
 .composer-popup {
-  background: $fcc-dark-blue;
+  background: $fcc-dark-background;
 }
 
 .composer-popup a.close {
@@ -494,12 +489,12 @@ input#reply-title::placeholder {
 }
 
 #topic-progress .bg {
-  background-color: $fcc-dark-blue;
-  border-color: $fcc-dark-blue;
+  background-color: $fcc-dark-background;
+  border-color: $fcc-dark-background;
 }
 
 #topic-progress {
-  border-color: $fcc-dark-blue;
+  border-color: $fcc-dark-background;
 }
 
 .badge.badge-notification {
@@ -515,14 +510,14 @@ input#reply-title::placeholder {
 }
 .select-kit.dropdown-select-box.composer-actions .select-kit-header:hover,
 .select-kit.dropdown-select-box.composer-actions .select-kit-header:focus {
-  background-color: $tertiary;
+  background-color: $fcc-blue-color;
 }
 
 .modal-backdrop {
 }
 // borders  ----------------------------------------------------------------------------------
 
-// border border none ---------------------------
+// border border $n ---------------------------
 
 .main-content.nav-menu-enabled .list-controls,
 div.menu-links-header a,
@@ -1019,7 +1014,7 @@ a.expand-hidden {
 
 .nav-pills > li,
 .layouts-nav-button > li {
-  float: none;
+  float: $n;
 }
 
 section.post-menu-area {
@@ -1046,7 +1041,7 @@ section.post-menu-area {
 .alert,
 #share-link.visible,
 .wrap {
-  max-width: $V-page-max-width;
+  max-width: 95vw;
 }
 
 // custom ---------------------------------------------
@@ -1112,7 +1107,7 @@ body {
   }
 
   .modal-backdrop {
-    display: none;
+    display: $n;
   }
 }
 
@@ -1134,11 +1129,11 @@ body {
   }
 
   .modal-backdrop {
-    display: none;
+    display: $n;
   }
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (-ms-high-contrast: $n), (-ms-high-contrast: active) {
   body:before {
     z-index: 1;
   }
@@ -1148,43 +1143,43 @@ body {
   }
 
   .fixed-modal {
-    background: rgba(64, 64, 64, 0.83);
+    background: rgba($fcc-quaternary-background, 0.83);
   }
 
   .bootbox.modal {
-    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 0 100vw rgba($fcc-primary-background, 0.8);
   }
 
   .modal-backdrop {
-    display: none;
+    display: $n;
   }
 }
 
 // Links  -------------------------------------------------------------------------------------
 
 a {
-  color: $tertiary;
+  color: $fcc-blue-color;
   transition: all 0.25s ease $i;
 
   &:visited,
   &:active,
   &.hashtag,
   &.hashtag:visited {
-    color: $tertiary;
+    color: $fcc-blue-color;
   }
   &:hover {
-    color: $fcc-dark-blue $i;
+    color: $fcc-dark-background $i;
   }
   &.mention {
-    color: adjust-hue($tertiary, 10deg);
+    color: adjust-hue($fcc-blue-color, 10deg);
   }
   &.mention-group {
-    color: adjust-hue($tertiary, -10deg);
+    color: adjust-hue($fcc-blue-color, -10deg);
   }
 }
 
 .user-main .staff-counters a {
-  color: $tertiary;
+  color: $fcc-blue-color;
 }
 
 // Buttons ------------------------------------------------------------------------------------
@@ -1198,14 +1193,14 @@ a {
 
   &:hover,
   &:focus {
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
-      0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba($fcc-primary-background, 0.18),
+      0 4px 15px 0 rgba($fcc-primary-background, 0.15);
     transition: box-shadow 0.4s ease-out;
   }
 
   &:hover,
   &.btn-hover {
-    background-color: $tertiary;
+    background-color: $fcc-blue-color;
     color: $fcc-quaternary-color;
   }
 
@@ -1221,7 +1216,7 @@ a {
 
   &:active,
   &.btn-active {
-    background: $tertiary;
+    background: $fcc-blue-color;
   }
 
   &[disabled],
@@ -1230,7 +1225,7 @@ a {
   }
 
   &.hidden {
-    display: none;
+    display: $n;
   }
 
   .d-icon {
@@ -1247,7 +1242,7 @@ a {
 
     &:hover,
     &.btn-hover {
-      background-color: $tertiary;
+      background-color: $fcc-blue-color;
       color: $fcc-secondary-background;
     }
   }
@@ -1302,14 +1297,14 @@ a {
 // Extras -------------------------------------------------------------------------------------
 
 .pace .pace-progress {
-  background: $tertiary;
+  background: $fcc-blue-color;
 }
 
 .spinner {
   height: 35px;
   width: 35px;
   border: $n;
-  box-shadow: inset 0 1px 1px lighten($tertiary, 15%);
+  box-shadow: inset 0 1px 1px lighten($fcc-blue-color, 15%);
   margin: 60px auto 0 auto;
 }
 
@@ -1320,16 +1315,16 @@ a {
 }
 
 .topic-list .posters a:first-child .avatar.latest:not(.single) {
-  box-shadow: 0 0 2px 3px $tertiary;
+  box-shadow: 0 0 2px 3px $fcc-blue-color;
   top: 0;
 }
 
 .modal.history-modal .diff-ins {
-  background: $tertiary;
+  background: $fcc-blue-color;
 }
 
 .modal.history-modal ins {
-  color: lighten($tertiary, 15%);
+  color: lighten($fcc-blue-color, 15%);
   background: $fcc-mid-blue;
 }
 
@@ -1346,7 +1341,7 @@ a {
 }
 
 .menu-panel.drop-down {
-  border-bottom: 1px solid #555555;
+  border-bottom: 1px solid $fcc-disabeled-background;
 }
 
 .modal-inner-container {
@@ -1359,11 +1354,11 @@ aside.onebox header a[href] {
 
 aside.onebox .onebox-body a[href],
 aside.onebox .onebox-body a[href]:visited {
-  color: $tertiary;
+  color: $fcc-blue-color;
 }
 
 aside.onebox {
-  border: none;
+  border: $n;
   border-left: 4px solid darken($fcc-quaternary-color, 35%);
   background: $fcc-secondary-color;
 }
@@ -1371,7 +1366,7 @@ aside.onebox {
 aside.quote .title,
 aside.quote blockquote,
 blockquote {
-  border-left: 3px solid $tertiary;
+  border-left: 3px solid $fcc-blue-color;
   background-color: $fcc-secondary-background;
 }
 
@@ -1430,12 +1425,12 @@ blockquote {
 }
 
 .list-controls .category-breadcrumb .dropdown-header {
-  background: none $i;
+  background: $n $i;
   color: inherit $i;
 }
 
 .timeline-container .topic-timeline .timeline-handle {
-  background: $tertiary;
+  background: $fcc-blue-color;
 }
 
 .select-box-kit .select-box-kit-row.is-selected,
@@ -1448,7 +1443,7 @@ blockquote {
 .d-icon.d-icon-d-tracking,
 .d-icon.d-icon-d-watching,
 .badge-notification.new-topic {
-  color: $tertiary;
+  color: $fcc-blue-color;
 }
 
 table.topic-list > thead,
@@ -1507,7 +1502,7 @@ span.badge-category-parent-bg {
 
 button.post-retort {
   z-index: 1;
-  float: none;
+  float: $n;
 }
 
 button.post-retort:first-of-type {
@@ -1543,10 +1538,6 @@ p.assigned-to {
 }
 
 // Inputs -----------------------------------------------------------------------------
-
-$input-b0: #555 !default;
-$input-b: darken($tertiary, 10%) !default;
-
 input,
 select,
 textarea {
@@ -1573,8 +1564,8 @@ input {
   &[type="tel"],
   &[type="color"] {
     &:focus {
-      border-color: $input-b0;
-      border-bottom-color: $input-b;
+      border-color: $fcc-disabeled-background;
+      border-bottom-color: $fcc-mid-blue;
       box-shadow: $n;
     }
   }
@@ -1582,8 +1573,8 @@ input {
 
 textarea {
   &:focus {
-    border-color: $input-b0;
-    border-bottom-color: $input-b;
+    border-color: $fcc-disabeled-background;
+    border-bottom-color: $fcc-mid-blue;
     box-shadow: $n;
   }
 }
@@ -1591,12 +1582,12 @@ textarea {
 // Select2 Combo-box  ----------------------
 
 .select2-container-active {
-  box-shadow: none;
+  box-shadow: $n;
 }
 
 .select2-drop-active {
-  border-color: $input-b0;
-  border-top-color: $input-b;
+  border-color: $fcc-disabeled-background;
+  border-top-color: $fcc-mid-blue;
 }
 
 .select-box-kit,
@@ -1605,7 +1596,7 @@ textarea {
     .select-box-kit-header,
     .select-kit-header {
       &.is-focused {
-        border: 1px solid $input-b;
+        border: 1px solid $fcc-mid-blue;
         -webkit-box-shadow: $n;
         box-shadow: $n;
       }
@@ -1613,7 +1604,7 @@ textarea {
 
     &.is-highlighted {
       .select-kit-header {
-        border: 1px solid $input-b;
+        border: 1px solid $fcc-mid-blue;
         -webkit-box-shadow: $n;
         box-shadow: $n;
       }
@@ -1621,7 +1612,7 @@ textarea {
 
     &.is-expanded {
       .select-kit-wrapper {
-        border: 1px solid $input-b;
+        border: 1px solid $fcc-mid-blue;
         -webkit-box-shadow: $n;
         box-shadow: $n;
       }
@@ -1633,23 +1624,23 @@ textarea {
 
 .select2-container {
   &.select2-container-active {
-    border-color: $input-b0;
-    border-bottom-color: $input-b;
+    border-color: $fcc-disabeled-background;
+    border-bottom-color: $fcc-mid-blue;
   }
 }
 
 .select2-dropdown-open a.select2-choice {
-  border-color: $input-b0;
-  border-bottom-color: $input-b;
+  border-color: $fcc-disabeled-background;
+  border-bottom-color: $fcc-mid-blue;
 }
 
 .select2-drop-active {
-  border: 1px solid $input-b;
+  border: 1px solid $fcc-mid-blue;
   border-top: 0;
 }
 
 .select2-container-active {
-  box-shadow: none;
+  box-shadow: $n;
 }
 
 // other inputs  --------------------------
@@ -1657,7 +1648,7 @@ textarea {
 .tag-chooser {
   &.select2-dropdown-open,
   &.select2-container-active {
-    border-color: $tertiary;
+    border-color: $fcc-blue-color;
   }
 }
 
@@ -1665,22 +1656,22 @@ textarea {
   .select2-choices
   .select2-search-field
   input.select2-active {
-  background: none $i;
+  background: $n $i;
 }
 
 .select2-container-multi.select2-container-active .select2-choices {
-  border-color: $tertiary;
+  border-color: $fcc-blue-color;
 }
 
 #reply-control .tag-chooser.select2-dropdown-open,
 #reply-control .tag-chooser.select2-container-active {
-  border-color: $tertiary;
+  border-color: $fcc-blue-color;
 }
 
 // date chooser navigation arrows
 .pika-prev,
 .pika-next {
-  background-color: $tertiary;
+  background-color: $fcc-blue-color;
 }
 
 div.ac-wrap input[type="text"] {
@@ -1690,7 +1681,7 @@ div.ac-wrap input[type="text"] {
 .select-kit.combo-box.category-drop .select-kit-body,
 .select-kit.combo-box.tag-drop .select-kit-body {
   border: 1px solid $fcc-disabeled-background;
-  box-shadow: none;
+  box-shadow: $n;
 }
 
 // groups  -------------------------------------------------------------------
@@ -1728,7 +1719,7 @@ div.ac-wrap input[type="text"] {
   }
 
   table.group-members th {
-    border-bottom: 1px solid #474747;
+    border-bottom: 1px solid $fcc-tertiary-background;
   }
 
   .group-members tr td:first-child,
@@ -1800,7 +1791,7 @@ h1.page-not-found {
   left: -1.25em $i;
 
   > p:empty {
-    display: none;
+    display: $n;
   }
 }
 
@@ -1808,13 +1799,13 @@ h1.page-not-found {
   opacity: 0.9;
 
   .d-icon {
-    color: $tertiary;
+    color: $fcc-blue-color;
   }
 
   &:hover,
   &.d-hover {
     opacity: 1;
-    background: $tertiary;
+    background: $fcc-blue-color;
 
     .d-icon {
       color: inherit;
@@ -1852,7 +1843,7 @@ section.post-actions:empty {
 .d-header .menu-panel {
   box-shadow: $n;
   background-color: $fcc-tertiary-background;
-  border-top: 1px solid #555;
+  border-top: 1px solid $fcc-disabeled-background;
 }
 
 .admin-contents.dashboard tbody {
@@ -1874,12 +1865,12 @@ ul.nav.nav-pills {
 .nav-pills > li > a.active:hover,
 .layouts-nav-button > li > a.active,
 .admin-controls .nav.nav-pills li.active a {
-  background: none;
-  color: $tertiary $i;
+  background: $n;
+  color: $fcc-blue-color $i;
 }
 
 .moderator .topic-body {
-  border-left: 3px solid lighten(rgba(complement($tertiary), 0.65), 5%) $i;
+  border-left: 3px solid $fcc-disabeled-color $i;
 }
 
 .moderator .topic-meta-data {
@@ -1940,7 +1931,7 @@ html.desktop-view.not-mobile-device {
   #navigation-bar {
     margin: 0;
     span.unread {
-      display: none;
+      display: $n;
     }
   }
 }
@@ -1972,7 +1963,7 @@ html.mobile-view.mobile-device {
     justify-content: flex-end;
     flex-direction: column;
     &:empty {
-      display: none;
+      display: $n;
     }
   }
 
@@ -2008,7 +1999,7 @@ html.mobile-view.mobile-device {
   }
 
   .list-controls .nav-pills > li {
-    background: none;
+    background: $n;
   }
   .list-controls .nav-pills {
     padding: 0 0.5em;
@@ -2081,11 +2072,11 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 
 .time-gap {
   padding: 0 10px;
-  margin-bottom: 0 !important;
+  margin-bottom: 0 $i;
 }
 
 .time-gap .topic-avatar {
-  display: none;
+  display: $n;
 }
 
 //// ---------------------------------------
@@ -2101,7 +2092,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 }
 
 .topic-map .buttons .btn {
-  box-shadow: none;
+  box-shadow: $n;
 }
 
 #topic-title {
@@ -2137,7 +2128,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 }
 
 .small-action .topic-avatar {
-  background: none;
+  background: $n;
 }
 
 .topic-avatar img.avatar {
@@ -2206,7 +2197,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 
 //
 .embedded-posts {
-  border: none;
+  border: $n;
 }
 
 .embedded-posts {
@@ -2272,7 +2263,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
     }
   }
 
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @media all and (-ms-high-contrast: $n), (-ms-high-contrast: active) {
     body:before {
       z-index: 2;
     }
@@ -2296,118 +2287,9 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
   -webkit-text-stroke: 0;
 }
 
-@if $rounded_borders == "true" {
-  #post_1 .contents,
-  .nav-pills > li.active > a,
-  .topic-map .buttons .btn,
-  #reply-control .d-editor-button-bar .btn {
-    border-radius: 0;
-  }
-
-  .contents,
-  .menu-panel.drop-down,
-  .topic-map,
-  .embedded-posts.bottom,
-  article:not(#post_1) section.post-menu-area,
-  .post-links-container,
-  .reply .cooked {
-    border-radius: 0;
-  }
-
-  .topic-meta-data,
-  #reply-control,
-  .embedded-posts.top {
-    border-radius: 0;
-  }
-
-  .popup-menu,
-  .list-controls,
-  .select-kit.dropdown-select-box.is-expanded .select-kit-body,
-  table,
-  .column,
-  .group-activity.container,
-  #topic-title .title-wrapper,
-  .row .alert.alert-info,
-  .boxed.white,
-  .cooked > blockquote,
-  .topic-list-bottom,
-  .group-details-container,
-  .group-outlet,
-  .admin-controls,
-  #banner,
-  .user-nav,
-  .full-width > ul.nav.nav-pills,
-  .list-controls button.btn,
-  .moderator .topic-body,
-  .topic-body.highlighted,
-  #user-card {
-    border-radius: 0px;
-  }
-
-  aside.quote {
-    .title {
-      border-radius: 0;
-    }
-
-    blockquote {
-      border-radius: 0;
-    }
-  }
-
-  input[type],
-  .btn,
-  button:hover,
-  button.d-hover {
-    border-radius: 0px;
-  }
-
-  .topic-map .map-collapsed .buttons .btn {
-    border-radius: 0;
-  }
-
-  table,
-  .column,
-  .group-outlet,
-  #user-card {
-    overflow: hidden;
-  }
-
-  a {
-    border-radius: 0px;
-  }
-
-  .cooked > .onebox,
-  .user-table,
-  .badge-card,
-  .user-stream-item,
-  .d-editor-preview blockquote,
-  .d-editor-preview aside.onebox {
-    border-radius: 0px;
-  }
-
-  .category-box,
-  .category-box-inner {
-    border-radius: 0px;
-  }
-
-  .embedded-posts.bottom {
-    margin-top: -10px;
-  }
-
-  .post-actions {
-    padding-top: 10px;
-    margin-top: -10px;
-  }
-
-  // plugin support
-  #whos-online {
-    border-radius: 0px;
-  }
-}
-
 // $primary: #0a0a23;
 // $secondary: #cccccc;
-// $tertiary: #009dd8;
+// $fcc-blue-color: #009dd8;
 // $quaternary: #9e9e9e;
 // $header_background: #0a0a23;
 // $header_primary: #cccccc;
@@ -2440,7 +2322,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 
   .d-header .categories-wrapper,
   .d-header .topic-header-extra {
-    display: none;
+    display: $n;
   }
   /*----------------------------------removing nav icons for desktop----------------------------*/
   #current-user a:before {
@@ -2449,7 +2331,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
   }
 
   #current-user div {
-    display: none;
+    display: $n;
   }
 
   #search-button:before {
@@ -2458,7 +2340,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
   }
 
   .fa.d-icon.d-icon-search.svg-icon.svg-node {
-    display: none;
+    display: $n;
   }
 
   #toggle-hamburger-menu:before {
@@ -2467,7 +2349,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
   }
 
   .fa.d-icon.d-icon-bars.svg-icon.svg-node {
-    display: none;
+    display: $n;
   }
 
   .d-header-icons .icon {
@@ -2485,7 +2367,7 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 
 // pencil icon
 svg.fa.d-icon.d-icon-pencil-alt.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 button.widget-button.btn-flat.edit.no-text.btn-icon:after,
@@ -2503,7 +2385,7 @@ button.widget-button.btn.btn-default.create.no-text.btn-icon:before {
 }
 
 svg.fa.d-icon.d-icon-reply.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 //tracking
@@ -2518,7 +2400,7 @@ svg.fa.d-icon.d-icon-reply.svg-icon.svg-node {
 // }
 
 svg.fa.d-icon.d-icon-d-tracking.svg-icon.svg-string {
-  display: none;
+  display: $n;
 }
 
 // link
@@ -2528,7 +2410,7 @@ button.widget-button.btn-flat.share.no-text.btn-icon:before {
 }
 
 svg.fa.d-icon.d-icon-link.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 // hear icon
@@ -2542,7 +2424,7 @@ button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:bef
 
 svg.fa.d-icon.d-icon-d-liked.svg-icon.svg-node,
 svg.fa.d-icon.d-icon-d-unliked.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 //more
@@ -2551,7 +2433,7 @@ button.widget-button.btn-flat.show-more-actions.no-text.btn-icon:before {
 }
 
 svg.fa.d-icon.d-icon-ellipsis-h.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 //flag
@@ -2560,7 +2442,7 @@ button.widget-button.btn-flat.create-flag.no-text.btn-icon:before {
 }
 
 svg.fa.d-icon.d-icon-flag.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 //bookmark
@@ -2572,7 +2454,7 @@ button.widget-button.btn-flat.bookmark.no-text.btn-icon:before {
   content: "Bookmark";
 }
 svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-node.d-hover {
-  display: none;
+  display: $n;
 }
 
 //dropdown
@@ -2585,7 +2467,7 @@ svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-node.d-hover {
 }
 
 svg.fa.d-icon.d-icon-chevron-down.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 //search
@@ -2594,7 +2476,7 @@ svg.fa.d-icon.d-icon-chevron-down.svg-icon.svg-node {
 }
 
 svg.fa.d-icon.d-icon-far-trash-alt.svg-icon.svg-node {
-  display: none;
+  display: $n;
 }
 
 // delete
@@ -2616,7 +2498,7 @@ svg.fa.d-icon.d-icon-flag.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-reply.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-pencil-alt.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-search.svg-icon.svg-string {
-  display: none;
+  display: $n;
 }
 
 /*-----------------------------------brand specific customizationz--------*/
@@ -2624,7 +2506,7 @@ img.avatar {
   border-radius: 0px;
   border-style: solid;
   border-width: 2px;
-  border-color: white;
+  border-color: $fcc-primary-color;
 }
 
 .d-header {
@@ -2632,7 +2514,7 @@ img.avatar {
 }
 
 .badge-category-bg {
-  display: none;
+  display: $n;
 }
 
 a:hover {
@@ -2662,52 +2544,4 @@ a:hover {
   height: 20px;
   flex: 1;
   z-index: 200;
-}
-
-.t1 {
-  background-color: $fcc-primary-color;
-}
-.t2 {
-  background-color: $fcc-secondary-color;
-}
-.t3 {
-  background-color: $fcc-tertiary-color;
-}
-.t4 {
-  background-color: $fcc-quaternary-color;
-}
-.t5 {
-  background-color: $fcc-disabeled-color;
-}
-.t6 {
-  background-color: $fcc-mid;
-}
-.t7 {
-  background-color: $fcc-disabeled-background;
-}
-
-.t8 {
-  background-color: $fcc-quaternary-background;
-}
-.t9 {
-  background-color: $fcc-tertiary-background;
-}
-.t10 {
-  background-color: $fcc-secondary-background;
-}
-.t11 {
-  background-color: $fcc-primary-background;
-}
-.t12 {
-  background-color: $fcc-blue;
-}
-.t13 {
-  background-color: $fcc-dark-blue;
-}
-.t14 {
-  background-color: $fcc-mid-blue;
-}
-
-body {
-  background: blue !important;
 }
