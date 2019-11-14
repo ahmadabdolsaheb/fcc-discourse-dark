@@ -21,6 +21,6 @@ Some of the theme plugins we are using as of now are:
 
 You can report any support issues, bugs in our [Contributors Chat room](https://gitter.im/FreeCodeCamp/Contributors).
 
-### the base for this theme is Discourse Vincent theme v0.77 beta
+## the base for this theme is Discourse Vincent theme v0.77 beta
 
 More information https://meta.discourse.org/t/76662/
