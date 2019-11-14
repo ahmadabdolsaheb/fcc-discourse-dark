@@ -291,7 +291,8 @@ div.menu-links-header .fa,
 div.menu-links-header a,
 .search-container .search-advanced .search-notice .fps-invalid,
 nav.post-controls a,
-nav.post-controls button {
+nav.post-controls button,
+aside.quote .title {
   color: $fcc-tertiary-color;
 }
 // .topic-meta-data .post-info a,
@@ -302,7 +303,10 @@ nav.post-controls button.create {
 }
 
 .d-editor-button-bar .btn .d-icon,
-.d-editor-button-bar .btn-default .d-icon {
+.d-editor-button-bar .btn-default .d-icon,
+.quote-controls,
+.quote-controls .d-icon,
+.topic-body .reply-to-tab {
   color: $fcc-quaternary-color;
 }
 
@@ -403,13 +407,9 @@ ul.general,
 .boxed.white,
 .alert.alert-info,
 .body-page,
-.topic-list,
-.topic-list tbody tr:nth-of-type(even),
 .category-list,
-.category-list tbody tr:nth-of-type(even),
 .search-container,
 .user-stream-item.item,
-tr.topic-list-item-separator + .topic-list-item + .topic-list-item,
 .category-boxes .category-box-inner,
 .category-boxes-with-topics .category-box-inner,
 .list-controls,
@@ -489,7 +489,8 @@ a.mention-group,
 .widget-container,
 tr.topic-list-item-separator + .topic-list-item,
 .deleted .topic-body,
-.topic-map .buttons .btn {
+.topic-map .buttons .btn,
+.user-menu .quick-access-panel .show-all a {
   background: $n;
 }
 
@@ -511,10 +512,6 @@ button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:hov
   background: $fcc-highlight-color;
   text-decoration: $n;
 }
-
-// .btn-primary.create.btn.btn-icon-text {
-//   background: $fcc-secondary-background;
-// }
 
 .search-container .search-advanced-sidebar .search-advanced-title,
 .search-container .search-advanced-sidebar .search-advanced-filters {
@@ -564,10 +561,6 @@ input#reply-title::placeholder {
   border-color: $fcc-highlight-background;
 }
 
-// .badge.badge-notification {
-//   background-color: $fcc-highlight-mid;
-// }
-
 .badge-notification.clicks {
   background-color: $fcc-quaternary-background;
 }
@@ -588,10 +581,6 @@ input#reply-title::placeholder {
 .select-kit .select-kit-collection::-webkit-scrollbar-thumb {
   background: $fcc-quaternary-color;
 }
-
-// .select-kit.combo-box.tag-drop .select-kit-row[data-value="all-tags"],
-// .select-kit.combo-box.tag-drop {
-// }
 
 .d-header-icons .unread-notifications,
 .badge.badge-notification {
@@ -717,6 +706,7 @@ section.about table th,
 .topic-meta-data,
 .latest-topic-list-item,
 .category-list tbody tr,
+div.menu-links-header .menu-links-row,
 .popup-menu {
   border-color: $fcc-quaternary-background $i;
 }
@@ -796,15 +786,6 @@ ol.category-breadcrumb {
 
 .topic-avatar {
   margin: 0.5em;
-}
-
-// margin large all sides ---------------------------
-
-.badges .content-list ul li,
-.user-main .about .details img.avatar,
-.user-main .about .details .primary h1,
-.user-stream-item.item {
-  margin: 1em;
 }
 
 // margin Large on side only ------------------------
@@ -2122,27 +2103,6 @@ html.mobile-view.mobile-device {
   }
 }
 
-// .select-kit .select-kit-row.is-highlighted {
-//   background: $fcc-secondary-color $i;
-//   color: $fcc-primary-background $i;
-// }
-
-// .select-kit .select-kit-row.is-highlighted .date-section {
-//   color: $fcc-primary-background;
-// }
-
-// .select-kit .select-kit-row.is-highlighted .top-date-string {
-//   color: $fcc-quaternary-background;
-// }
-
-// .select-kit .select-kit-row.is-highlighted .texts .name {
-//   color: $fcc-primary-background;
-// }
-
-// .select-kit .select-kit-row.is-highlighted .texts .desc {
-//   color: $fcc-secondary-background;
-// }
-
 // centered content
 
 $q-background: rgba($fcc-primary-background, 0.5) !default;
@@ -2380,29 +2340,6 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
   -webkit-text-stroke: 0;
 }
 
-// $primary: #0a0a23;
-// $secondary: #cccccc;
-// $fcc-highlight-color: #009dd8;
-// $quaternary: #9e9e9e;
-// $header_background: #0a0a23;
-// $header_primary: #cccccc;
-// $highlight: #002ead;
-// $danger: #96000e;
-// $success: #1ca551;
-// $love: #f50057;
-
-// "Vincent Dark": {
-//   "primary": "cccccc",
-//   "secondary": "#0a0a23",
-//   "tertiary": "009dd8",
-//   "quaternary": "9E9E9E",
-//   "header_background": "#0a0a23",
-//   "header_primary": "cccccc",
-//   "highlight": "9E9E9E",
-//   "danger": "96000e",
-//   "success": "1ca551",
-//   "love": "f50057"
-// }
 /*----------------------------------navigation----------------------------*/
 
 #current-user a:before {
@@ -2492,10 +2429,6 @@ svg.fa.d-icon.d-icon-reply.svg-icon.svg-node {
 .select-kit-header.btn-default.dropdown-select-box-header.btn.no-text.btn-icon:before {
   content: "Tracking";
 }
-// .options.select-kit.dropdown-select-box .dropdown-select-box-header:before,
-// #topic-footer-buttons .topic-notifications-button .btn:before {
-//   content: "";
-// }
 
 svg.fa.d-icon.d-icon-d-tracking.svg-icon.svg-string {
   display: $n;
@@ -2508,24 +2441,6 @@ button.widget-button.btn-flat.share.no-text.btn-icon:before {
 }
 
 svg.fa.d-icon.d-icon-link.svg-icon.svg-node {
-  display: $n;
-}
-
-// hear icon
-button.widget-button.btn-flat.toggle-like.like.no-text.btn-icon:before {
-  content: "Like";
-}
-
-button.widget-button.btn-flat.button-count.like-count.highlight-action.my-likes.btn-icon-text:after {
-  content: " likes";
-}
-
-button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:before {
-  content: "Unlike";
-}
-
-svg.fa.d-icon.d-icon-d-liked.svg-icon.svg-node,
-svg.fa.d-icon.d-icon-d-unliked.svg-icon.svg-node {
   display: $n;
 }
 
@@ -2586,6 +2501,7 @@ svg.fa.d-icon.d-icon-far-trash-alt.svg-icon.svg-node {
 button.widget-button.btn-flat.delete.no-text.btn-icon:before {
   content: "delete";
 }
+
 //remove icons on post footer
 svg.fa.d-icon.d-icon-plus.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-envelope.svg-icon.svg-string,
@@ -2633,20 +2549,12 @@ svg.fa.d-icon.d-icon-random.svg-icon.svg-string {
 .user-menu svg.fa.d-icon.d-icon-bookmark.svg-icon.svg-node {
   display: inline-flex;
 }
-// svg.fa.d-icon.d-icon-heart.svg-icon.svg-string {
-//   visibility: hidden;
-//   position: relative;
-// }
-// svg.fa.d-icon.d-icon-heart.svg-icon.svg-string:before {
-//   content: "L";
-//   z-index: 1000;
-//   visibility: visible;
-//   display: block;
-//   position: absolute;
-//   background-color: red;
-//   padding: 5px;
-//   top: 2px;
-// }
+
+//remove badges
+.badge-card .badge-contents .badge-icon,
+.user-menu .quick-access-panel li .d-icon {
+  display: none;
+}
 
 /*-----------------------------------brand specific customizationz--------*/
 img.avatar {
