@@ -195,7 +195,8 @@ span.deleted-posts,
 #reply-control.draft,
 #reply-control.saving,
 .topic-post.deleted .topic-meta-data span,
-.topic-post.deleted .topic-meta-data a {
+.topic-post.deleted .topic-meta-data a,
+#whos-online {
   color: $fcc-quaternary-color;
 }
 
@@ -904,7 +905,8 @@ a.mention-group,
 .topic-body,
 .embedded-posts.bottom .row,
 .boxed .contents,
-.topic-post.deleted section.post-actions .post-action {
+.topic-post.deleted section.post-actions .post-action,
+#banner .close {
   padding: 0;
 }
 
