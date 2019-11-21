@@ -379,6 +379,9 @@ nav.post-controls button.create {
   color: $fcc-quaternary-color;
 }
 
+.topic-body .reply-to-tab {
+  color: $fcc-highlight-color;
+}
 // backgrounds --------------------------------------------------------------------------------
 
 // background theme base -------------------------
@@ -2405,18 +2408,52 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
 // }
 /*----------------------------------navigation----------------------------*/
 
-#current-user a:before {
-  content: "";
-}
 @media screen and (min-width: 500px) {
-  .d-header {
-    height: 38px;
-  }
-
   .d-header .categories-wrapper,
   .d-header .topic-header-extra {
     display: $n;
   }
+
+  .d-header .title,
+  .extra-info-wrapper {
+    display: none;
+  }
+  .d-header .panel,
+  .topic-body .reply-to-tab {
+    margin-left: 0px;
+  }
+
+  .d-header > .wrap .contents {
+    justify-content: center;
+  }
+
+  .d-header #site-logo {
+    height: 38px;
+  }
+
+  a.widget-link.topic-link {
+    display: none;
+  }
+
+  #search-button,
+  #toggle-hamburger-menu {
+    height: 35px;
+    width: auto;
+    padding: 0px 15px 3px 15px;
+  }
+
+  #current-user a.icon {
+    height: 35px;
+    width: auto;
+    padding: 0px 15px 3px 15px;
+  }
+
+  #search-button:hover,
+  #toggle-hamburger-menu:hover {
+    background: white;
+    color: $fcc-primary-background;
+  }
+
   /*----------------------------------removing nav icons for desktop----------------------------*/
   #current-user a:before {
     content: "Profile";
@@ -2452,10 +2489,16 @@ $q-background: rgba($fcc-primary-background, 0.5) !default;
     }
   }
 
-  .header-dropdown-toggle {
-    padding-left: 35px;
+  // .header-dropdown-toggle {
+  //   padding-left: 35px;
+  // }
+
+  #toggle-hamburger-menu:hover:before,
+  #search-button:hover:before {
+    color: $fcc-primary-background;
   }
 }
+
 /*----------------------------------icon and text replacemt----------------------------*/
 
 // pencil icon
@@ -2508,24 +2551,6 @@ button.widget-button.btn-flat.share.no-text.btn-icon:before {
 }
 
 svg.fa.d-icon.d-icon-link.svg-icon.svg-node {
-  display: $n;
-}
-
-// hear icon
-button.widget-button.btn-flat.toggle-like.like.no-text.btn-icon:before {
-  content: "Like";
-}
-
-button.widget-button.btn-flat.button-count.like-count.highlight-action.my-likes.btn-icon-text:after {
-  content: " likes";
-}
-
-button.widget-button.btn-flat.toggle-like.has-like.fade-out.no-text.btn-icon:before {
-  content: "Unlike";
-}
-
-svg.fa.d-icon.d-icon-d-liked.svg-icon.svg-node,
-svg.fa.d-icon.d-icon-d-unliked.svg-icon.svg-node {
   display: $n;
 }
 
@@ -2607,7 +2632,6 @@ svg.fa.d-icon.d-icon-certificate.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-user.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-check-square.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-d-watching-first.svg-icon.svg-string,
-svg.fa.d-icon.d-icon-heart.svg-icon.svg-node,
 svg.fa.d-icon.d-icon-certificate.svg-icon.svg-node,
 svg.fa.d-icon.d-icon-comment.svg-icon.glyph.svg-string,
 svg.fa.d-icon.d-icon-far-envelope.svg-icon.svg-string,
@@ -2624,7 +2648,9 @@ svg.fa.d-icon.d-icon-bed.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-briefcase.svg-icon.svg-string,
 svg.fa.d-icon.d-icon-sign-out-alt.svg-icon.svg-node,
 svg.fa.d-icon.d-icon-user.svg-icon.svg-node,
-svg.fa.d-icon.d-icon-random.svg-icon.svg-string {
+svg.fa.d-icon.d-icon-random.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-clock-o.svg-icon.svg-string,
+svg.fa.d-icon.d-icon-far-clock.svg-icon.svg-string {
   display: $n;
 }
 
@@ -2675,6 +2701,10 @@ a:hover {
 .badge-wrapper.bullet .badge-category-parent-bg,
 .badge-wrapper.bullet .badge-category-bg {
   height: 13px;
+}
+
+.badge-card .badge-contents .badge-icon {
+  display: $n;
 }
 
 // after header color testing
